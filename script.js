@@ -140,14 +140,23 @@
   
 // })
 
-var btn = document.querySelector('button')
-var box = document.querySelector('#box')
+// var btn = document.querySelector('button')
+// var box = document.querySelector('#box')
 
-btn.addEventListener('click',function(){
- var c1 = Math.floor(Math.random()*256)
- var c2 = Math.floor(Math.random()*256)
- var c3 = Math.floor(Math.random()*256)
+// btn.addEventListener('click',function(){
+//  var c1 = Math.floor(Math.random()*256)
+//  var c2 = Math.floor(Math.random()*256)
+//  var c3 = Math.floor(Math.random()*256)
 
-  box.style.backgroundColor = `rgb(${c1},${c2},${c3})`  
+//   box.style.backgroundColor = `rgb(${c1},${c2},${c3})`  
   
-})
+// })
+
+// var arc = [10,20,30,40,50,60,70,80,90,100]
+
+//   var a = Math.floor(Math.random()*arc.length)
+
+//   console.log(arc[a]);
+
+
+
