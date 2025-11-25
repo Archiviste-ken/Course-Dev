@@ -158,5 +158,39 @@
 
 //   console.log(arc[a]);
 
+var arr = [
+  {
+    team : 'India', score: 250
+    
+  },
+
+  {
+    team : 'Australia', score: 300
+
+  },
+
+  {
+    team : 'England', score: 275
+
+  },
+
+  {
+    team : 'South Africa', score: 280
+
+  },
+
+  {
+    team : 'New Zealand', score: 260
+  },
+]
+
+// var a = Math.floor(Math.random()*arr.length)
+
+var btn = document.querySelector('button')
+
+btn.addEventListener('click',function(){
+  var a = Math.floor(Math.random()*arr.length)
+console.log(arr[a]);
+})
 
 
