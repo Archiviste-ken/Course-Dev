@@ -11,6 +11,7 @@
     // - textContent
     // - innerHTML
 // changing css
+  // h1.style.color = 'red'
 // event listeners
 
 // you can call html a document, document means html file.
