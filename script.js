@@ -188,9 +188,20 @@ var arr = [
 
 var btn = document.querySelector('button')
 
+// btn.addEventListener('click',function(){
+//   var a = Math.floor(Math.random()*arr.length)
+// console.log(arr[a]);
+// })
+
+
+var btn = document.querySelector('button')
+
+var h1 = document.querySelector('h1')
+
+var main = document.querySelector('main')
+
 btn.addEventListener('click',function(){
-  var a = Math.floor(Math.random()*arr.length)
-console.log(arr[a]);
+  var num = Math.floor(Math.random()*arr.length)
+  h1.innerHTML = arr[num].team
+  
 })
-
-
