@@ -158,35 +158,35 @@
 
 //   console.log(arc[a]);
 
-var arr = [
-  {
-    team : 'India', score: 250
+// var arr = [
+//   {
+//     team : 'India', score: 250
     
-  },
+//   },
 
-  {
-    team : 'Australia', score: 300
+//   {
+//     team : 'Australia', score: 300
 
-  },
+//   },
 
-  {
-    team : 'England', score: 275
+//   {
+//     team : 'England', score: 275
 
-  },
+//   },
 
-  {
-    team : 'South Africa', score: 280
+//   {
+//     team : 'South Africa', score: 280
 
-  },
+//   },
 
-  {
-    team : 'New Zealand', score: 260
-  },
-]
+//   {
+//     team : 'New Zealand', score: 260
+//   },
+// ]
 
 // var a = Math.floor(Math.random()*arr.length)
 
-var btn = document.querySelector('button')
+// var btn = document.querySelector('button')
 
 // btn.addEventListener('click',function(){
 //   var a = Math.floor(Math.random()*arr.length)
@@ -194,14 +194,36 @@ var btn = document.querySelector('button')
 // })
 
 
+// var btn = document.querySelector('button')
+
+// var h1 = document.querySelector('h1')
+
+// var main = document.querySelector('main')
+
+// btn.addEventListener('click',function(){
+//   var num = Math.floor(Math.random()*arr.length)
+//   h1.innerHTML = arr[num].team
+  
+// })
+
+
+
+// var h1 = document.createElement('div')
+
+// console.log(h1);
+
+
+// var div = document.createElement('div')
+
+// console.log(div);
+
 var btn = document.querySelector('button')
 
-var h1 = document.querySelector('h1')
-
-var main = document.querySelector('main')
-
 btn.addEventListener('click',function(){
-  var num = Math.floor(Math.random()*arr.length)
-  h1.innerHTML = arr[num].team
+  
+  var h1 = document.createElement('div')
+  h1.innerHTML = 'New Heading'
+  console.log(h1);
+  
   
 })
