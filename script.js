@@ -217,13 +217,21 @@
 
 // console.log(div);
 
+//  
+
+var h1 = document.createElement('h1')
+
 var btn = document.querySelector('button')
 
 btn.addEventListener('click',function(){
+  var h1 = document.createElement('h1')
+  console.log('h1');
   
-  var h1 = document.createElement('div')
-  h1.innerHTML = 'New Heading'
-  console.log(h1);
-  
-  
+ 
 })
+
+// h1.innerHTML = 'Hello from Js'
+
+// console.log(h1);
+
+
