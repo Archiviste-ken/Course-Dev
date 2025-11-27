@@ -219,19 +219,37 @@
 
 //  
 
-var h1 = document.createElement('h1')
+// var h1 = document.createElement('h1')
 
-var btn = document.querySelector('button')
+// var btn = document.querySelector('button')
 
-btn.addEventListener('click',function(){
-  var h1 = document.createElement('h1')
-  console.log('h1');
+// btn.addEventListener('click',function(){
+//   var h1 = document.createElement('h1')
+//   console.log('h1');
   
  
-})
+// })
 
 // h1.innerHTML = 'Hello from Js'
 
 // console.log(h1);
+
+
+var h1 = document.createElement('h1')
+
+var btn = document.createElement('button')
+
+btn.innerHTML = 'download'
+
+h1.innerHTML = 'Hey'
+
+var main = document.querySelector('main')
+
+btn.style.color = 'red'
+
+main.appendChild(h1)
+
+main.appendChild(btn)
+
 
 
