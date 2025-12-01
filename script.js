@@ -235,21 +235,48 @@
 // console.log(h1);
 
 
-var h1 = document.createElement('h1')
+// var h1 = document.createElement('h1')
 
-var btn = document.createElement('button')
+// var btn = document.createElement('button')
 
-btn.innerHTML = 'download'
+// btn.innerHTML = 'download'
 
-h1.innerHTML = 'Hey'
+// h1.innerHTML = 'Hey'
 
+// var main = document.querySelector('main')
+
+// btn.style.color = 'red'
+
+// main.appendChild(h1)
+
+// main.appendChild(btn)
+
+// var div =document.createElement('div')
+
+// div.style.height = '100px'
+// div.style.width = '100px'
+// div.style.backgroundColor = 'purple'
+
+// var main = document.querySelector('main')
+
+// main.appendChild(div)
+
+var btn = document.querySelector('button')
 var main = document.querySelector('main')
 
-btn.style.color = 'red'
+btn.addEventListener('click',function(){
+  var h1 =document.createElement('h1')
 
-main.appendChild(h1)
+  console.log(h1);
+  
 
-main.appendChild(btn)
+)}
+
+
+
+
+
+
 
 
 
