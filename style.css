@@ -80,10 +80,10 @@ main{
   button:active{
   scale: 0.95}
   
-  h1{
+  /* h1{
     color: aqua;
     font-size: 70px;
     background-color: crimson;
     padding: 40px 50px;
     border-radius: 10px;
-  }
+  } */
