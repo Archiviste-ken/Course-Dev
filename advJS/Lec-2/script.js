@@ -26,6 +26,8 @@ abcd.apply(obj, [1, 2, 3]); // this will point to obj
 
 // bind dont call the function immediately, instead it returns a new function with the specified this value and arguments.
 
+//call calls the function immediately with the specified this value and arguments.
+
 
 function abcd(a,b,c) {
     console.log(this, a,b,c);
