@@ -10,12 +10,20 @@
 
 // root.render(h1);
 
-var h1 = React.createElement('h1', null, 'Hello World!');
-var h2 = React.createElement('h2', null, 'Hello from React!');
+// var h1 = React.createElement('h1', {id:'hero'}, 'Hello World!');
+// var h2 = React.createElement('h2', {className: 'heroine'}, 'Hello from React!');
 
 
-var div = React.createElement('div',null,h1,h2)
+// var div = React.createElement('div',{id:'parent'},[h1,h2]);
 
-var root = ReactDOM.createRoot(document.querySelector('#container'));
+// var root = ReactDOM.createRoot(document.querySelector('#container'));
 
- root.render(h2);
+//  root.render(div);
+// function h1(){
+//     return React.createElement('h1', null, 'Hello from h1!');
+// }
+
+// var root = ReactDOM.createRoot(document.querySelector('#container'));
+
+// root.render(hello);
+
