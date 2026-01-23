@@ -265,12 +265,12 @@ var btn = document.querySelector('button')
 var main = document.querySelector('main')
 
 btn.addEventListener('click',function(){
-  var h1 =document.createElement('h1')
+  var h1 =document.createElement('h1');
 
   console.log(h1);
   
 
-)}
+})
 
 
 
