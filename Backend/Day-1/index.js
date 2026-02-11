@@ -15,3 +15,13 @@ console.log("Ohaiyo!")
 // -> How to install packages?
 
 // to install packages we use npm which stands for node package manager. It is a tool which helps us to install packages in our project.
+
+// How to use packages ?
+
+// 
+
+
+const catMe = require("cat-me")
+
+
+console.log(catMe())
