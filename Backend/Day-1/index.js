@@ -18,7 +18,23 @@ console.log("Ohaiyo!")
 
 // How to use packages ?
 
-// 
+// What is package.json??
+// the packages on which the js code is dependent on are stored as dependencies and gets listed in the package.json file it maintains it.
+
+
+// node_modules contains the already written code of the package, like jo package use kr rhe hai uska code kahi to store hoga na, to node_modules do this task of storing the code related to the package.
+
+
+//package-lock.json handles the further dependencies of the the package which we have downloaded.
+
+// What is a server?
+
+
+// server is a machine which has its own os,processor, storage, ram.
+
+// how is it different from the regular devices and machines having the same things?
+
+// its different in terms of request and a proper response
 
 
 const catMe = require("cat-me")
