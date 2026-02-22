@@ -11,17 +11,17 @@
 // })
 
 
-const express = require('express')
+// const express = require('express')
 
-const app = express()
+// const app = express()
 
-app.get('/', (req,res) =>{
-    res.send("Hello World")
-})
+// app.get('/', (req,res) =>{
+//     res.send("Hello World")
+// })
 
-app.listen(3000,()=> {
-    console.log("Server is running on port 3000")
-})
+// app.listen(3000,()=> {
+//     console.log("Server is running on port 3000")
+// })
 
 
 
@@ -60,6 +60,47 @@ app.listen(3000,()=> {
 
 
 // DELETE - DELETES A RESOURCE.
+
+
+// const express = require("express")
+
+// const app = express()
+
+
+
+
+// app.listen(3000,()=>
+// console.log("Server is running on port 3000");
+// )
+
+
+
+const express = require("express")
+
+const app = express()
+
+const notes = [
+
+    {
+        title: " test title 1",
+        description: "test description 1"
+    },
+    {
+        title: "test title 2",
+        description: " test description 2"
+    }
+]
+
+ app.post('/',(req,res) => {
+  
+  })
+
+
+
+app.listen(3000,()=>
+console.log("Server is runnig on port 3000");
+)
+
 
 
 
