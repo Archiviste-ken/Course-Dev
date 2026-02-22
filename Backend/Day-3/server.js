@@ -79,34 +79,44 @@ const express = require("express")
 
 const app = express()
 
-const notes = [
 
-    {
-        title: " test title 1",
-        description: "test description 1"
-    },
-    {
-        title: "test title 2",
-        description: " test description 2"
-    }
-]
+app.use(express.json())
 
- app.post('/',(req,res) => {
+const notes = []
+
+ app.post('/notes',(req, res) => {
+
+    console.log(req.body);
+    
+    notes.push(req.body)
+
+    res.send("note created")
   
   })
 
-
-
-app.listen(3000,()=>
-console.log("Server is runnig on port 3000");
-)
-
-
+//   app.get("/notes",(res,req) =>
+// {
+//     res.send
+// })
 
 
 
+app.listen(3000,()=>{
+console.log("Server is running on port 3000");
+})
 
 
+
+
+
+
+
+// the data which is used to communicate by the frontend and backend is known as JSON.
+
+// the data transferred is in the JSON format
+
+// why we are using postman?
+// because postman gives many tools, so that we can create API easily, we can develop API by browser but it is not very efficient and hard, postman makes it comparatively easy.
 
 
 
