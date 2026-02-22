@@ -94,6 +94,13 @@ const notes = []
   
   })
 
+
+  app.get('/notes',(req,res)=>
+{
+    res.send(notes)
+})
+  
+
 //   app.get("/notes",(res,req) =>
 // {
 //     res.send
