@@ -12,12 +12,29 @@
 
 // app.listen(3000)// server start krna
 
-const express = require("express") // express.js library ko load krna
+// const express = require("express") // express.js library ko load krna
 
-const app = express()// express application ka instancer create krna
+// const app = express()// express application ka instancer create krna
 
-app.get('/kaizen',(req,res) => {
+// app.get('/kaizen',(req,res) => {
+//     res.send("Welcome to kaizen")
+// })
+
+// app.listen(3000)
+
+
+
+
+const express = require("express")
+
+const app = express()
+
+app.get('/',(req,res) =>{
     res.send("Welcome to kaizen")
 })
 
+
 app.listen(3000)
+
+
+
