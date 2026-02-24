@@ -25,5 +25,29 @@ const express = require("express")
 const app = express() // server create hojata hai
 
 
+const notes = [
+    
+//     {
+
+//      title: "test title 1",
+//      description: "test description 1"
+
+// }
+
+]
+
+app.get('/',(req,res) =>{
+    res.send("Hello World")
+})
+
+// POST /notes
+app.post('/notes',(req,res) =>{
+    console.log(req.body);
+
+    res.send("note created")
+    
+})
+
+
 
 module.exports = app
