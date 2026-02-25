@@ -75,42 +75,42 @@
 
 
 
-const express = require("express")
+// const express = require("express")
 
-const app = express()
+// const app = express()
 
 
-app.use(express.json())
+// app.use(express.json())
 
-const notes = []
+// const notes = []
 
- app.post('/notes',(req, res) => {
+//  app.post('/notes',(req, res) => {
 
-    console.log(req.body);
+//     console.log(req.body);
     
-    notes.push(req.body)
+//     notes.push(req.body)
 
-    res.send("note created")
+//     res.send("note created")
   
-  })
+//   })
 
 
-  app.get('/notes',(req,res)=>
-{
-    res.send(notes)
-})
-  
-
-//   app.get("/notes",(res,req) =>
+//   app.get('/notes',(req,res)=>
 // {
-//     res.send
+//     res.send(notes)
 // })
+  
+
+// //   app.get("/notes",(res,req) =>
+// // {
+// //     res.send
+// // })
 
 
 
-app.listen(3000,()=>{
-console.log("Server is running on port 3000");
-})
+// app.listen(3000,()=>{
+// console.log("Server is running on port 3000");
+// })
 
 
 
@@ -127,25 +127,65 @@ console.log("Server is running on port 3000");
 
 
 
+// const express = require("express")
+
+// const app = express()
+
+
+// app.use(express.json()) // middleware, to read the req.body data.
+
+// const notes = []
+
+
+
+// app.post('/notes',(req,res) => {
+
+//     console.log(req.body);  // req.body contains data sent from frontend. 
+//     notes.push(req.body)
+//     res.send("notes created")
+//     // req mai frontend se jitna bhi data aa skta hai, vo access req se hoga
+//     // res mai server ko agar koi response ya data bhejna hai to res use hoga.
+// })
+
+// app.get('/notes',(req,res) => {
+//     res.send(notes)
+// })
+
+
+// app.listen(3000,() => {
+//     console.log("Server is running on port 3000");
+    
+// })
+
+
 
 const express = require("express")
 
 const app = express()
 
+app.use(express.json())
 
 const notes = []
 
-
-app.post('/notes',(req,res) =>{
-
+app.post('/notes',(req,res) => {
     console.log(req.body);
-
+    
+    res.send("notes created")
 
     notes.push(req.body)
 
-    res.send("notes created")
-    
-    
-
-
 })
+
+
+app.get('/notes',(req,res) =>{
+    res.send(notes)
+})
+
+
+app.listen(3000,() =>{
+    console.log("Server is running on 3000 port");
+    
+})
+
+
+
