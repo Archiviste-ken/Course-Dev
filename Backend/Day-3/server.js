@@ -159,6 +159,36 @@
 
 
 
+// const express = require("express")
+
+// const app = express()
+
+// app.use(express.json())
+
+// const notes = []
+
+// app.post('/notes',(req,res) => {
+//     console.log(req.body);
+    
+//     res.send("notes created")
+
+//     notes.push(req.body)
+
+// })
+
+
+// app.get('/notes',(req,res) =>{
+//     res.send(notes)
+// })
+
+
+// app.listen(3000,() =>{
+//     console.log("Server is running on 3000 port");
+    
+// })
+
+
+
 const express = require("express")
 
 const app = express()
@@ -167,25 +197,22 @@ app.use(express.json())
 
 const notes = []
 
-app.post('/notes',(req,res) => {
-    console.log(req.body);
-    
+
+app.post("/notes",(req,res) =>{
     res.send("notes created")
-
+    console.log(req.body);
     notes.push(req.body)
-
+    
 })
 
 
-app.get('/notes',(req,res) =>{
+app.get('/notes',(req,res) => {
     res.send(notes)
 })
 
 
-app.listen(3000,() =>{
-    console.log("Server is running on 3000 port");
+app.listen(3000,()=>{
+    console.log("server is running on the port 3000");
     
 })
-
-
 
