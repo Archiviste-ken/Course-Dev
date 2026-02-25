@@ -26,26 +26,19 @@ const express = require("express")
 
 const app = express() // server create hojata hai
 
+app.use(express.json())
 
-const notes = [
-    
-//     {
+const notes = []
 
-//      title: "test title 1",
-//      description: "test description 1"
-
-// }
-
-]
-
-app.get('/',(req,res) =>{
-    res.send("Hello World")
+app.get('/notes',(req,res) =>{
+    // res.send("Hello World")
+    res.send(notes)
 })
 
 // POST /notes
 app.post('/notes',(req,res) =>{
-    console.log(req.body);
-
+    console.log(req.body)
+    notes.push(req.body)
     res.send("note created")
     
 })
