@@ -16,6 +16,8 @@
 
 // app.listen(3000)
 
+// SERVER ko config karna = using middlewares like for example in Day-3 app.use(express.json()
+
 
 
 
