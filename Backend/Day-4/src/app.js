@@ -44,7 +44,10 @@ app.post('/notes',(req,res) =>{
 })
 
 
-app.delete('/note/:index')
+app.delete("/notes/:index",(req,res)=>{
+    console.log(req.params.index);
+    
+})
 
 
 
