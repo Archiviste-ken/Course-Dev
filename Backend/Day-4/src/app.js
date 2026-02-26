@@ -44,5 +44,8 @@ app.post('/notes',(req,res) =>{
 })
 
 
+app.delete('/note/:index')
+
+
 
 module.exports = app
