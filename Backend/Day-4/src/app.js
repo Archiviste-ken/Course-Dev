@@ -71,7 +71,7 @@ app.delete('/notes/:index',(req,res)=>{
 app.patch("/notes/:index",(req,res) =>{
     notes[ req.params.index ].description  = req.body.description
 
-    res.send["note updated successfully"]
+    res.send("note updated successfully")
 })
 
 
