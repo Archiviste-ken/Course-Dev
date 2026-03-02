@@ -30,6 +30,8 @@ const connectDB = require("./config/database")
 connectDB()
 
 
+
+
 app.listen(3000,()=>{
     console.log("server is now running on the port 3000");
 })
