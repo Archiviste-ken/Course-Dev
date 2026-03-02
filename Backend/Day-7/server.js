@@ -23,9 +23,9 @@ database se connect karna
 // })
 
 
-
+require("dotenv").config()// very important line
 const app  = require("./src/app")
-const connectDB = require("./config/database")
+const connectDB = require("./src/config/database")
 
 connectDB()
 
