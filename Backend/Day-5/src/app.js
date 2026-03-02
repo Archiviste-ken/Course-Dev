@@ -6,6 +6,7 @@ server ko config krna
 
 
 const express = require("express")
+const noteModel = require("./models/noteModel")
 
 const app = express()
 
@@ -24,6 +25,10 @@ app.post('/notes',(req,res) =>{
 
     res.status(201).json({
         message: "Note created successfully"
+    })
+
+    noteModel.create({
+        title,description
     })
     
 })
