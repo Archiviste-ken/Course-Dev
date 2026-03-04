@@ -12,11 +12,11 @@ app.use(express.json)
  * - req.body = {title,description}
  */
 
-app.post("/api/notes",async (req,res)=>{
-    const{title , description} = req.body
+app.post('/api/notes', async (req, res) => {
+    const { title, description } = req.body
 
-  const note =  await noteModel.create({
-        title , description 
+    const note = await noteModel.create({
+        title, description
     })
 
     res.status(201).json({
@@ -32,13 +32,13 @@ app.post("/api/notes",async (req,res)=>{
      */
 
 
-app.get("/api/notes",async (req,res)=>{
-   const notes = await noteModel.find()
+app.get("/api/notes", async (req, res) => {
+    const notes = await noteModel.find()
 
-   res.status(200).json({
-    message: "Notes fetched successfully.",
-    notes
-   })
+    res.status(200).json({
+        message: "Notes fetched successfully.",
+        notes
+    })
 })
 
 /**
@@ -46,15 +46,27 @@ app.get("/api/notes",async (req,res)=>{
  * - Delete notes with the id from req.params
  */
 
-app.delete("/api/notes/:id",(req,res)=>{
+app.delete('/api/notes/:id', async (req, res) => {
     const id = req.params.id
 
-    console.log(id);
+    await noteModel.findByIdAndDelete(id)
 
     res.status(200).json({
-        message: "Note deleted successfully"
+        message: "Note deleted successfully."
     })
-    
+})
+
+
+app.patch('/api/notes/:id', async (req, res) => {
+    const id = req.params.id
+    const { description } = req.body
+
+    await noteModel.findByIdAndUpdate(id, { description })
+
+    res.status(200).json({
+        message: "Note updated successfully."
+    })
+
 })
 
 module.exports = app
