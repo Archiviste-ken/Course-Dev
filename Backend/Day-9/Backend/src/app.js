@@ -2,7 +2,8 @@ const express = require("express")
 const noteModel = require("./models/note.model")
 const app = express()
 
-app.use(express.json())
+
+app.use(express.json)
 
 
 /**
@@ -12,17 +13,17 @@ app.use(express.json())
  */
 
 app.post("/api/notes",async (req,res)=>{
-        const {title,description} = req.body
+    const{title , description} = req.body
 
-        const note = await noteModel.create({
-            title,description
-        })
-
-        res.status(201).json({
-            message: "note created",
-            note
-        })
+  const note =  await noteModel.create({
+        title , description 
     })
+
+    res.status(201).json({
+        message: "note created successfully",
+        note
+    })
+})
 
 
     /**
@@ -45,23 +46,19 @@ app.get("/api/notes",async (req,res)=>{
  * - Delete notes with the id from req.params
  */
 
-
-app.delete('/api/notes/:id', async (req,res) => {
+app.delete("/api/notes/:id",(req,res)=>{
     const id = req.params.id
 
-    await noteModel.findByIdAndDelete(id)
+    console.log(id);
 
     res.status(200).json({
-        message: "Note deleted successfully."
+        message: "Note deleted successfully"
     })
     
 })
-
 
 module.exports = app
 
 
         
 
-
-module.exports = app
