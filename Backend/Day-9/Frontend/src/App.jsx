@@ -6,19 +6,19 @@ import viteLogo from '/vite.svg'
 function App() {
       const [notes,setNotes ] = useState([
         {
-          title: "test title",
+          title: "test title 1",
           description: "test description"
         },
          {
-          title: "test title",
+          title: "test title 2",
           description: "test description"
         },
          {
-          title: "test title",
+          title: "test title 3",
           description: "test description"
         },
          {
-          title: "test title",
+          title: "test title 4",
           description: "test description"
         },
       ])
