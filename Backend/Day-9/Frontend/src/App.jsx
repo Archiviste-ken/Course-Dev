@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import axios from "axios"
 
 
 function App() {
@@ -22,6 +21,11 @@ function App() {
           description: "test description"
         },
       ])
+
+      axios.get('http://localhost:3000/api/notes').then((res)=>{
+        setNotes(res.data.notes)
+        
+      })
 
   return (
     
