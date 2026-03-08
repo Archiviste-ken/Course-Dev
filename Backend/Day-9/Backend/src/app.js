@@ -130,6 +130,10 @@ app.patch("/api/notes/:id",async (req,res)=>{
 })
 
 
+app.use('*',(req.res)=>{
+    res.send{"this is wild card"}
+})
+
 
 module.exports = app
         
