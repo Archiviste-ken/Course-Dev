@@ -82,7 +82,7 @@ const app = express()
 app.use(cors())
 
 app.use(express.json())
-// app.use(express.static("./public"))
+app.use(express.static("./public"))   //allows the server to serve static files (HTML, CSS, JS, images) from the public folder directly to users.
 
 app.post("/api/notes", async (req,res)=>{
     const {title, description}  = req.body
