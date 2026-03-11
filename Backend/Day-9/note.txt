@@ -6,7 +6,7 @@ Authorization = identify krna ki user koun hai and vo user kya kya kr skta hai
 
 
 
-Validation = dat ka format check krna
+Validation = data ka format check krna
 
 
 
