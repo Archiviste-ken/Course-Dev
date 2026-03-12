@@ -9,7 +9,7 @@ authRouter.post("/register", async (req,res)=> {
         const isUserAlreadyExists = await userModel.findOne({email})
 
         
-
+q2
         const user = await userModel.create({
             email,password, name
         })
