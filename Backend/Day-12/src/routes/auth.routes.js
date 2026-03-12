@@ -18,8 +18,14 @@ authRouter.post("/register", async (req,res)=> {
             email,password, name
         })
 
+        const token = jwt.sign({
+            id:user._id,
+            email: user.email
+        },
+        process.env.JWT_SECRET
+    )
         res.status(201).json({
-            message: "user register",user
+            message: "user register",user, token
         })
 })
 
