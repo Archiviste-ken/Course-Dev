@@ -9,7 +9,7 @@
 // /**
 //  * - POST /api/notes
 //  * - create new note and save data in mongoDB
-//  * - req.body = {title,description}
+//  * - req.body = {title,description} 
 //  */
 
 // app.post('/api/notes', async (req, res) => {
