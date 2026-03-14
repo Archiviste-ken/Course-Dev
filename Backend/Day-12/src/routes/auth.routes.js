@@ -15,10 +15,16 @@ authRouter.post("/register", async (req,res)=> {
     const {email,name,password} = req.body
 
         const isUserAlreadyExists = await userModel.findOne({email})
+        const isNameAlreadyExists = await userModel.findOne({name})
         
         if(isUserAlreadyExists){
             return res.status(400).json({
                 message:"User already exists with this email address"
+            })
+        }
+        if(isNameAlreadyExists){
+            return res.status(400).json({
+                message:"Name already exists"
             })
         }
         const user = await userModel.create({
