@@ -8,8 +8,8 @@ const authRouter = express.Router(); // this is the router for the authenticatio
 
 /**
  * /api/route/register
- *
  */
+
 authRouter.post("/register", async (req, res) => {
   const { email, name, password } = req.body;
 
@@ -59,17 +59,31 @@ authRouter.post("/register", async (req, res) => {
   //         message: "user register", user , token
   //     })
 
-      const token = jwt.sign({
-          id: user._id,
-          email: user.email,
-      },
-      process.env.JWT_SECRET,
-  );
+//       const token = jwt.sign({
+//           id: user._id,
+//           email: user.email,
+//       },
+//       process.env.JWT_SECRET,
+//   );
 
-      res.cookie("jwt_token", token);
-          res.status(201).json({
-              message: "user register", user , token
-          });
+//       res.cookie("jwt_token", token);
+//           res.status(201).json({
+//               message: "user register", user , token
+//           });
+
+        const token = jwt.sign({
+            id: user._id,
+            email: user.email,
+        },
+        process.env.JWT_SECRET,
+    );
+    
+    res.cookie("jwt_token", token);
+            res.status(201).json({
+                message: "user register",
+                user,
+                token
+            });
 });
 
 module.exports = authRouter;
