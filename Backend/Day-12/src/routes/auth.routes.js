@@ -31,17 +31,42 @@ authRouter.post("/register", async (req,res)=> {
             email,password, name
         })
 
+    //     const token = jwt.sign({   // JWt = JSON Web Token. When the user logs in or registers, the server gives them this token so they don't need to log in again on every request.
+    //         id:user._id,
+    //         email: user.email
+    //     },
+    //     process.env.JWT_SECRET
+    // )
+
+    // res.cookie("jwt_token", token)
+    //     res.status(201).json({
+    //         message: "user register",user, token
+    //     })
+    //     const token = jwt.sign({
+    //         id: user._id,
+    //         email: user.email
+    //     },
+    //     process.env.JWT_SECRET
+    // )
+    // res.cookie("jwt cookie", token)
+    //     res.status(201).json({
+    //         message: "user register", user , token
+    //     })
+
         const token = jwt.sign({
-            id:user._id,
+            id : user_.id,
             email: user.email
         },
         process.env.JWT_SECRET
     )
 
-    res.cookie("jwt_token", token)
-        res.status(201).json({
-            message: "user register",user, token
-        })
+        res.cookie("jwt cookie", token)
+            res.status(201).json({
+                message: "user register", user , token
+            })
+
+
 })
+
 
 module.exports = authRouter
