@@ -75,7 +75,7 @@ authRouter.post("/register", async (req, res) => {
             id: user._id,
             email: user.email,
         },
-        process.env.JWT_SECRET,
+        process.env.JWT_SECRET,  
     );
     
     res.cookie("jwt_token", token);
