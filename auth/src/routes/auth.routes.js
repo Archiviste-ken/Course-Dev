@@ -44,6 +44,64 @@ authRouter.post("/register",async(req,res)=>{
     
 })
 
+authRouter.get('/get-me',async (req,res)=>{
+
+    const token = req.cookies.token
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET)
+    
+    const user = await userModel.findById(decoded.id)
+    res.status(200).json({
+        user: {
+            name: user.name, 
+            email: user.email
+        }
+    })
+})
+
+
+
+authRouter.post("/login", async(req,res)=>{
+    const { email, password } = req.body;
+
+    const user = await userModel.findOne({ email})
+
+    if(!user){
+        return res.status(404).json({
+            message: "User not found"
+        })
+    }
+
+
+
+    const hash = crypto.createHash("sha256").update(password).digest("hex")
+    
+    const isPasswordValid = hash === user.password
+
+    if(!isPasswordValid){
+        return res.status(401).json({
+            message: "Invalid Password"
+        })
+    }
+
+    const token = jwt.sign({
+        id: user._id,
+    },
+    process.env.JWT_SECRET, { expiresIn: "1h"})  
+
+    res.cookie("token", token)
+
+    res.status(200).json({
+        message: "Login Successful",
+        user: {
+            name: user.name,
+            email: user.email
+        }
+    })  
+
+
+})
+
 
 // authRouter.post("/login")
 
