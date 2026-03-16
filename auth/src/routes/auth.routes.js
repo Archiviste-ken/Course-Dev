@@ -2,6 +2,7 @@ const express = require("express")
 const userModel = require("../model/user.model")
 const authRouter = express.Router();
 const crypto = require("crypto")
+const jwt = require("jsonwebtoken")
 
 /**
  * POST /api/auth/register
@@ -28,7 +29,7 @@ authRouter.post("/register",async(req,res)=>{
     const token = jwt.sign({
         id: user._id,
     },
-    process.env.JWT_SECRET, { expiresIn: " 1h"})
+    process.env.JWT_SECRET, { expiresIn: "1h"})
 
     res.cookie("token",token)
 
@@ -38,14 +39,10 @@ authRouter.post("/register",async(req,res)=>{
             name: user.name,
             email: user.email
         }
-
     })
 
     
 })
-
-
-
 
 
 // authRouter.post("/login")
