@@ -4,7 +4,6 @@ const authController = require("../controllers/auth.controller")
 
 
 
-
 /**
  * POST /api/auth/register
  */
