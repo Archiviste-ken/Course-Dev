@@ -59,6 +59,7 @@ const isUserAlreadyExists = await userModel.findOne({
          * user ka data hona chaiye
          * dat unique hona chaiye
          */
+        console.log(process.env.JWT_SECRET);
         const token = jwt.sign({
             id: user._id
         }, process.env.JWT_SECRET,{expiresIn:"1d"}
