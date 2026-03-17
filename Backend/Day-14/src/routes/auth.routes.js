@@ -31,6 +31,12 @@ const isUserAlreadyExists = await userModel.findOne({
         {username}
     ]
 })
+    if(isUserAlreadyExists){
+        return res.status(400)
+        .json({
+            message: "User already exists" isUserAlreadyExists.email ? "Email already exists" : "Username already exists"
+        })
+    }
 
 
 
