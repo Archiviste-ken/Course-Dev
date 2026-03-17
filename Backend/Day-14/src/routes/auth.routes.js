@@ -6,11 +6,9 @@ const userModel = require("../model/user.model")
 
 
 authRouter.post("/register", async (req, res)=>{
-    console.log(req.body);
+    
 const {username, email, password , bio , profile_image} = req.body
 // const isUserExistsByEmail =  await userModel.findOne({email})
-
-
 //     if(isUserExistsByEmail){
 //     return res.status(400).json({
 //         message: "Email already exists"
@@ -23,10 +21,6 @@ const {username, email, password , bio , profile_image} = req.body
 //                 message: "Username already exists"
 //             })
 //         }
-
-
-
-
 
 const isUserAlreadyExists = await userModel.findOne({
     $or: [
@@ -42,7 +36,6 @@ const isUserAlreadyExists = await userModel.findOne({
            message: "User already exists" + (isUserAlreadyExists.email) == email ? "Email already exists" : "Username already exists"
         })
     }
-
     const hash = crypto.createHash("sha256").update(password).digest("hex")
 
     const user = await userModel.create({
@@ -52,9 +45,6 @@ const isUserAlreadyExists = await userModel.findOne({
         profile_image,
         password: hash
     })
-
-
-    
         /**
          * user ka data hona chaiye
          * dat unique hona chaiye
@@ -75,7 +65,17 @@ const isUserAlreadyExists = await userModel.findOne({
                 bio: user.bio,
                 profileImage: user.profile_image
             }})
+}
+)
+
+authRouter.post("/login", async (req, res)=>{
+    const {username ,email, password} = req.body
+
+
 })
+
+
+
 
 
 
