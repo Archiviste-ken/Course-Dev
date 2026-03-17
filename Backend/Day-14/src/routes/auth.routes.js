@@ -2,10 +2,12 @@ const express = require('express')
 const crypto = require("crypto")
 const authRouter = express.Router()
 const jwt = require("jsonwebtoken")
+const userModel = require("../model/user.model")
 
 
 authRouter.post("/register", async (req, res)=>{
-const {username, email, password , bio , profileImage} = req.body
+    console.log(req.body);
+const {username, email, password , bio , profile_image} = req.body
 // const isUserExistsByEmail =  await userModel.findOne({email})
 
 
@@ -47,7 +49,7 @@ const isUserAlreadyExists = await userModel.findOne({
         username,
         email,
         bio,
-        profileImage,
+        profile_image,
         password: hash
     })
 
@@ -70,7 +72,7 @@ const isUserAlreadyExists = await userModel.findOne({
                 username: user.username,
                 email: user.email,
                 bio: user.bio,
-                profileImage: user.profileImage
+                profileImage: user.profile_image
             }})
 })
 
