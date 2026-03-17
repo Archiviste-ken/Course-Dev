@@ -11,7 +11,16 @@ authRouter.post("/register", async (req, res)=>{
     if(isUserExistsByEmail){
     return res.status(400).json({
         message: "Email already exists"
-                })
-            
-            
-}
+                })}
+
+        const isUserExistsByUsername = await userModel.findOne({username})
+
+        if(isUserExistsByUsername){
+            return res.status(400).json({
+                message: "Username already exists"
+            })
+        }
+
+})
+
+module.exports = authRouter
