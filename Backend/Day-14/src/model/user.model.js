@@ -4,7 +4,7 @@ const userSchema = new mongoose.Schema({
     username: {
         type: String,
         unique: [true, "Username already exists"],
-        required: [true, "Username is required"]
+        required: [true, "Username is required"],
     },
 
     email: {
@@ -29,4 +29,4 @@ const userModel = mongoose.model("users", userSchema )
 
 
 
-module.exports = userModel2
+module.exports = userModel
