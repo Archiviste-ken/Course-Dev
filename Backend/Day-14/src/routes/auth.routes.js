@@ -4,7 +4,7 @@ const authRouter = express.Router()
 
 
 authRouter.post("/register", async (req, res)=>{
-            const {username, email, password} = req.body
+            const {username, email, password , bio , profileImage} = req.body
             const isUserExistsByEmail =  await userModel.findOne({email})
 
 
