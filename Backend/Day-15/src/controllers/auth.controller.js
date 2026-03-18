@@ -3,56 +3,6 @@ const jwt = require("jsonwebtoken")
 const userModel = require("../model/user.model")
 
 
-async function loginController(req,res) {
-    const {username ,email, password} = req.body
-
-    const user  = await userModel.findOne({
-
-        $or:[
-            {
-                username: username
-            },
-            {
-                email:  email
-            },
-        ]
-    })
-    if (!user) {
-        return res.status(400).json({
-            message: "User not found"
-        })
-    }
-
-   const hash = await bcrypt.hash(password, 10 )
-
-    const isPasswordValid = hash == user.password
-
-    if(!isPasswordValid){
-        return res.status(401).json({
-            message: "Invalid password"
-        })
-    }
-
-    const token = jwt.sign({
-        id: user._id
-    }, process.env.JWT_SECRET, {expiresIn: "1d"})
-
-    res.cookie("token", token)
-
-    res.status(200).json({
-        message: "Login successful",
-        user: {
-            username: user.username,
-            email: user.email,
-            bio: user.bio,
-            profileImage: user.profile_image
-        }
-    })
-
-}
-
-
-
 async function registerController(req, res) {
     
 const {username, email, password , bio , profile_image} = req.body
@@ -84,7 +34,7 @@ const isUserAlreadyExists = await userModel.findOne({
            message: "User already exists" + (isUserAlreadyExists.email) == email ? "Email already exists" : "Username already exists"
         })
     }
-   const hash = await bcrypt.hash(password, 10)
+   const hash = await bcrypt.hash(password, 10) 
 
     const user = await userModel.create({
         username,
@@ -116,6 +66,51 @@ const isUserAlreadyExists = await userModel.findOne({
 }
 
 
+async function loginController(req,res) {
+    const {username ,email, password} = req.body
+
+    const user  = await userModel.findOne({
+
+        $or:[
+            {
+                username: username
+            },
+            {
+                email:  email
+            },
+        ]
+    })
+    if (!user) {
+        return res.status(400).json({
+            message: "User not found"
+        })
+    }
+
+    const isPasswordValid = await bcrypt.compare(password, user.password)
+
+    if(!isPasswordValid){
+        return res.status(401).json({
+            message: "Invalid password"
+        })
+    }
+
+    const token = jwt.sign({
+        id: user._id
+    }, process.env.JWT_SECRET, {expiresIn: "1d"})
+
+    res.cookie("token", token)
+
+    res.status(200).json({
+        message: "Login successful",
+        user: {
+            username: user.username,
+            email: user.email,
+            bio: user.bio,
+            profileImage: user.profile_image
+        }
+    })
+
+}
 
 
 module.exports = {
