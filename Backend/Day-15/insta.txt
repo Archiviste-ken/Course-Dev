@@ -1,5 +1,4 @@
 ===> Authentication
-
         ==> Register { 1. user ka dat save krna. 2. token user ko dena }
         ==> Login
         ==> Logout (token blacklisting)
