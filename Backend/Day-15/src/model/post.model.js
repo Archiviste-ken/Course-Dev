@@ -8,7 +8,14 @@ const postSchema = new mongoose.schema({
 
     imgUrl:{
         type: String,
-        required: [ true, " imgUrl is require for creating an post"]
+        required: [ true, "imgUrl is require for creating an post"]
+    },
+
+    user: {
+        ref: "users",
+        type: mongoose.Schema.Types.ObjectId,
+        required:[ true, "user id is required for creating an post"]
+
     }
 })
 
