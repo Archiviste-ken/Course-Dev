@@ -52,6 +52,48 @@ async function createPostController(req, res) {
     })
 
 }
-module.exports = {
-    createPostController
+
+async function getPostController(req, res) {
+
+    let decoded = null;
+
+    const token = req.cookies.token
+    try{ decoded = jwt.verify(token, process.env.JWT_SECRET)
+    } catch (err) {
+        return res.status(401).json({
+            message: "Unauthorized"
+        })
+    }
+
+    const userId = decoded.id
+    // console.log(decoded);
+    // console.log(userId);
+
+    const posts = await postModel.find({
+        user: userId
+    })
+    
+    res.status(200).json({
+        message: "Here are the posts for the user",
+        posts
+    })
 }
+
+async function getPostDetailsController(req, res) {
+    const token = req.cookies.token
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET)
+    } catch (err) {
+        return res.status(404).json({
+            message: "Unauthorized"
+        })
+    }
+}
+
+
+
+module.exports = {
+    createPostController,
+    getPostController
+}  
