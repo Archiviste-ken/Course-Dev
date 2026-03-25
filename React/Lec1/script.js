@@ -4,7 +4,9 @@
 
 // let arr = [1,2,3,4,5]
 
-// let arr2 = [...arr]
+// let arr2 = [...arr]   // spread operator
+
+// console.log(arr2);
 
 // var arr3 = [10,20,30,40,50]
 
