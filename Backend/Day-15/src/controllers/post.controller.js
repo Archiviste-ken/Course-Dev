@@ -55,6 +55,13 @@ async function createPostController(req, res) {
 
 async function getPostController(req, res) {
 
+
+     if (!token) {
+        return res.status(401).json({
+            message: "Unauthorized Access"
+        })
+    }
+
     let decoded = null;
 
     const token = req.cookies.token
@@ -82,11 +89,18 @@ async function getPostController(req, res) {
 async function getPostDetailsController(req, res) {
     const token = req.cookies.token
 
+    if (!token) {
+        return res.status(401).json({
+            message: "Unauthorized Access"
+        })
+    }
+    let decoded = null;
+
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET)
+         decoded = jwt.verify(token, process.env.JWT_SECRET)
     } catch (err) {
-        return res.status(404).json({
-            message: "Unauthorized"
+        return res.status(401).json({
+            message: "Invalid token"
         })
     }
 }
