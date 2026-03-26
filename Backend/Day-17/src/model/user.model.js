@@ -17,10 +17,18 @@ const userSchema = new mongoose.Schema({
         required: [true, "Password is required"]    
 },
     bio: String,
-    followers: String,
+
     profile_image: {
         type: String,
         default: "https://i.ytimg.com/vi/JjrczzikEo4/mqdefault.jpg"
+    },
+    followers: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "users"
+    },
+    following: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "users"
     },
 })
 
