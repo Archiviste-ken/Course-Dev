@@ -3,6 +3,7 @@ const ImageKit = require("@imagekit/nodejs/index.js");
 const { toFile } = require("@imagekit/nodejs/index.js");
 const jwt = require("jsonwebtoken");
 
+
 console.log("ENV:", process.env.IMAGEKIT_PRIVATE_KEY);
 
 const imagekit = new ImageKit({
@@ -24,7 +25,7 @@ async function createPostController(req, res) {
   const post = await postModel.create({
     caption: req.body.caption,
     imgUrl: file.url,
-    user: decoded.id,
+    user: req.user.id,
   });
 
   res.status(201).json({
@@ -35,7 +36,7 @@ async function createPostController(req, res) {
 
 async function getPostController(req, res) {
 
-  const userId = 
+  const userId = req.user.id;
   // console.log(decoded);
   // console.log(userId);
 
@@ -54,7 +55,7 @@ async function getPostDetailsController(req, res) {
 
 
 
-  const userId = 
+  const userId = req.user.id;
   const postId = req.params.postId;
 
   const post = await postModel.findById(postId);
