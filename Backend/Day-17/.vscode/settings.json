@@ -30,11 +30,11 @@
   },
 
   "github.copilot.enable": {
-    "*": false,
+    "*": true,
     "plaintext": false,
     "markdown": false,
     "scminput": false,
-    "javascript": false,
+    "javascript": true,
     "dotenv": true
   },
   "github.copilot.inlineSuggest.enable": true
