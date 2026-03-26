@@ -30,8 +30,23 @@
 
 
 
-var h1 = document.createElement('h1');
+// var h1 = document.createElement('h1');
 
-h1.innerHTML = 'Hello from JavaScript!';
+// h1.innerHTML = 'Hello from JavaScript!';
 
-document.body.appendChild(h1);
+// document.body.appendChild(h1);
+
+
+
+var h1 = React.createElement('h1',null, 'Mai hoon Sp!');
+var h2 = React.createElement('h2', null, 'Mai hoon Sp!');
+var div = React.createElement('div',null , [h1 , h2])
+
+var  container = document.querySelector('#container');
+
+const root = ReactDOM.createRoot(container)
+
+
+root.render(div); // accepts only one argument.
+
+
