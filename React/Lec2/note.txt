@@ -1,0 +1,8 @@
+Library.
+
+
+- GSAP (moving animation)
+- Lenis ( Scrolling smoothness)
+- swiper (Sliders)
+- three (3D)
+- Reactjs
