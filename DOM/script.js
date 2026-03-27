@@ -46,7 +46,13 @@ h.forEach(function(e){
 })
 
 
-h.forEach
+
+// document.getElementById('box')
+
+
+document.getElementByClassName("box")
+
+
 
 
 
