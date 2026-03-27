@@ -1,9 +1,12 @@
 import React from 'react'
-import './App.css'
+
 
 const App = () => {
   return (
-    <div>App</div>
+    <div>
+      <h1>Hello, guys</h1>
+      <h2>Welcome to React!</h2>
+    </div>
   )
 }
 
