@@ -1,0 +1,10 @@
+DOM.
+
+-> What is DOM?
+-> 4 Pillars of DOM
+=> Simple example of bulb or whatever clicking on the same button.
+-> Multiple events
+-> Selecting multiple elements at a same time
+->setTimeout
+->setInterval
+-> future projects
