@@ -1,0 +1,7 @@
+// 4 pillars of DOM
+
+
+// 1. Selection of an elements
+// 2. Changing of HTML
+// 3. Changing CSS
+// 4. Event Listener
