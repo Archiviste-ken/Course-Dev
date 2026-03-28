@@ -13,7 +13,7 @@ const App = () => {
       <div className = 'text-xl text-red-600'>App</div>
       <h1 className = 'text-indigo-100'>Age : {age}</h1>
       <h1 className = 'text-indigo-100'>Name : {name}</h1>
-      <h1 className = 'text-indigo-100'>Array : {arr.filter(function(elem){
+      <h1 className = 'text-green-800'>Array : {arr.filter(function(elem){
           return elem > 15
       }).map(function(elem){  
           return <h1>{elem/2}</h1>
