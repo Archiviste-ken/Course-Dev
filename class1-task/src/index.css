@@ -18,3 +18,32 @@ body{
 #root{
   color:  white;
 }
+
+.nav{
+  background-color: red;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.sec{
+  background-color: rgba(0, 255, 51, 0.535);
+  height: 85vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.center {
+  background-color: rgba(255, 0, 0, 0.535);
+  height: 50vh;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
