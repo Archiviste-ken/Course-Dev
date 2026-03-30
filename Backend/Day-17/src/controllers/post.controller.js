@@ -80,6 +80,13 @@ async function getPostDetailsController(req, res) {
   });
 }
 
+
+
+async function likePostController(req, res){
+  const username = req.user.username
+  const postId = req.params.postId
+}
+
 module.exports = {
   createPostController,
   getPostController,
