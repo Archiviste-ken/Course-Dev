@@ -24,20 +24,19 @@
 
 
 
-const mongooose = require("mongoose")
+const mongoose = require("mongoose")
 
 
-const followSchema =new mongooose.Schema({
+const followSchema =new mongoose.Schema({
 
-    follwer:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "users",
-        required: [true, "Follower is required"]
+    follower:{
+        type: String,
+        
+       
     },
     followee:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref:"users",
-        required:[ true, "Followee is required" ]
+        type: String,
+        
     }
 
 } , { 
