@@ -33,7 +33,7 @@ const followSchema =new mongoose.Schema({
         type: String,
         
        
-    },
+             },
     followee:{
         type: String,
         
