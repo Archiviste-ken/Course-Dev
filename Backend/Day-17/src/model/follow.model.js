@@ -1,23 +1,51 @@
-const mongoose = require("mongoose")
+// const mongoose = require("mongoose")
 
 
 
-const followSchema = new mongoose.Schema({
+// const followSchema = new mongoose.Schema({
 
-    follower: {
+//     follower: {
+//         type: mongoose.Schema.Types.ObjectId,
+//         ref: "users",
+//         required: [ true, "Follower is required"]
+//     },
+//     followee:{
+//         type: mongoose.Schema.Types.ObjectId,
+//         ref: "users",
+//         required: [ true, "Followee is required"]
+//     }
+// }, {
+//     timestamps: true
+// })
+
+// const followModel = mongoose.model("follows", followSchema)
+
+// module.exports = followModel 
+
+
+
+const mongooose = require("mongoose")
+
+
+const followSchema =new mongooose.Schema({
+
+    follwer:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "users",
-        required: [ true, "Follower is required"]
+        required: [true, "Follower is required"]
     },
     followee:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "users",
-        required: [ true, "Followee is required"]
+        ref:"users",
+        required:[ true, "Followee is required" ]
     }
-}, {
-    timestamps: true
+
+} , { 
+    timestamps: true 
 })
 
-const followModel = mongoose.model("follows", followSchema)
 
-module.exports = followModel 
+const followModel = mongoose.model("follows",followSchema)
+
+
+module.exports = followModel
