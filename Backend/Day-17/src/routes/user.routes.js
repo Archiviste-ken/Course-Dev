@@ -1,5 +1,6 @@
 const express = require("express")
 const userController = require("../controllers/user.controller")
+const { identifyUser } = require("../middlewares/auth.middleware")
 
 const userRouter = express.Router()
 
@@ -10,7 +11,7 @@ const userRouter = express.Router()
  * @desc Follow a user
  * @access Private
  */
-userRouter.post("/follow/:userid", userController.followUser)
+userRouter.post("/follow/:username",identifyUser, userController.followUserContoller)
 
 
 module.exports = userRouter
