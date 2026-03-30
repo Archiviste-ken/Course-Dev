@@ -1,4 +1,3 @@
-
 const jwt = require("jsonwebtoken");
 
 
@@ -25,7 +24,7 @@ async function identifyUser(req, res, next) {
 }
 
 
-
+ /* req.user */
  // Move to the controller
 
 
