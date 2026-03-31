@@ -33,8 +33,16 @@ postRouter.get("/details/:postId", identifyUser, postController.getPostDetailsCo
 
 
 /**
- * 
- */
+ *  @route POST /api/posts/like/:postid
+ * @desc Like a post with id provided in the request params
+*/
+
+
+postRouter.post("/like/:postId", identifyUser, postController. LikePostController)
+
+
+
+
 
 
 
