@@ -1,4 +1,4 @@
-    const mongoose = require("mongoose")
+const mongoose = require("mongoose")
 
 const postSchema = new mongoose.Schema({
     caption:{
@@ -15,7 +15,6 @@ const postSchema = new mongoose.Schema({
         ref: "users",
         type: mongoose.Schema.Types.ObjectId,
         required:[ true, "user id is required for creating an post"]
-
     }
 })
 
