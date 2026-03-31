@@ -11,7 +11,7 @@ const likeSchema = new mongoose.Schema({
     user: {
        
         type: String,
-        ref: "users",  
+           ref: "users",  
         required: [true, "username is required for creating a like"]
     }
 }, { timestamps: true }
