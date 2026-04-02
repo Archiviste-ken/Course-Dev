@@ -1,27 +1,23 @@
-import { config } from 'dotenv';
+import { config } from "dotenv";
 config();
 
 /**
- * GEMINI_API_KEY: The API key for accessing the Gemini API.
- * MISC_API_KEY: The API key for accessing miscellaneous services.
- * COHERENCE_API_KEY: The API key for accessing the Coherence API.
+ * GOOGLE_API_KEY: 
+ * MISTRAL_API_KEY:
+ * COHERE_API_KEY:
  */
 
-
-
 type CONFIG = {
-    readonly GEMINI_API_KEY: string;
+    readonly GOOGLE_API_KEY: string;
     readonly MISTRAL_API_KEY: string;
     readonly COHERE_API_KEY: string;
 }
 
-
-const config: CONFIG = {
-    GEMINI_API_KEY: process.env.GEMINI_API_KEY || '',
-    MISTRAL_API_KEY: process.env.MISTRAL_API_KEY || '',
-    COHERE_API_KEY: process.env.COHERE_API_KEY || '',
+const app_config: CONFIG = {
+    GOOGLE_API_KEY: process.env.GOOGLE_API_KEY || "",
+    MISTRAL_API_KEY: process.env.MISTRAL_API_KEY || "",
+    COHERE_API_KEY: process.env.COHERE_API_KEY || "",
 }
 
 
-
-export default config;
+export default app_config;
