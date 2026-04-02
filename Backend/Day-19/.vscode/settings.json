@@ -1,0 +1,41 @@
+{
+  "editor.inlineSuggest.enabled": true,
+
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+
+  "editor.suggestOnTriggerCharacters": true,
+  "editor.acceptSuggestionOnEnter": "on",
+  "editor.tabCompletion": "on",
+
+  "editor.suggest.showKeywords": true,
+  "editor.suggest.showSnippets": true,
+
+  "editor.parameterHints.enabled": true,
+  "editor.hover.enabled": "on",
+
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+
+  "javascript.validate.enable": true,
+  "typescript.validate.enable": true,
+
+  "javascript.implicitProjectConfig.checkJs": true,
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit"
+  },
+
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": false,
+    "scminput": false,
+    "javascript": true,
+    "dotenv": true
+  },
+  "github.copilot.inlineSuggest.enable": true
+}
