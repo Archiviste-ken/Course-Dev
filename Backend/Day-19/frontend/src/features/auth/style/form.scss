@@ -11,17 +11,30 @@ main {
   height: fit-content;
   min-width: 400px;
 
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* ✅ fixed */
+}
 
-    input {
-      border: none;
-      outline: none;
-      padding-inline: 1.5rem;
-      padding-block: 1rem;
-      border-radius: 1rem;
-    }
-  }
+/* no nesting */
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-container form input {
+  border: none;
+  outline: none;
+  padding-inline: 1.5rem;
+  padding-block: 1rem;
+  border-radius: 1rem;
+}
+
+.form-container form button {
+  background-color: #bd0c23;
+  padding: 1rem;
+  color: whitesmoke;
+  border-radius: 1rem;
+  cursor: pointer;
 }
