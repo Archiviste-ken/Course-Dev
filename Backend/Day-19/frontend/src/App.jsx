@@ -1,11 +1,11 @@
-import React from 'react'
+
+import {RouterProvider} from 'react-router-dom'
+import AppRoutes from './Approutes'
+
 
 const App = () => {
   return (
-    <>
-
-    
-    </>
+    <AppRoutes />
   )
 }
 
