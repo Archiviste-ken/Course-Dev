@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@theme {
+  --font-manrope: "Manrope", sans-serif;
+  --font-inter: "Inter", sans-serif;
+  --color-background: #f8f9fa;
+  --color-surface: #f8f9fa;
+  --color-surface-container: #ebeef0;
+  --color-surface-container-low: #f1f4f5;
+  --color-surface-container-high: #e5e9eb;
+  --color-surface-container-lowest: #ffffff;
+  --color-primary: #5b5a8b;
+  --color-primary-dim: #4f4e7e;
+  --color-secondary-container: #e3e0f9;
+  --color-on-surface: #2d3335;
+  --color-on-secondary-container: #515064;
+  --color-outline-variant: rgba(173, 179, 181, 0.15); /* outline_variant #adb3b5 with 15% opacity */
+}
+
+/* Base styles enforcing the Ethereal Architect guidelines */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Manrope", sans-serif;
+}
+
+/* The Ghost Border utility class */
+.ghost-border {
+  border: 1px solid var(--color-outline-variant);
+}
+
+.ghost-border-primary {
+  border: 1px solid rgba(91, 90, 139, 0.2); /* primary with 20% opacity */
+}
+
+/* Diffused shadow utility */
+.ambient-shadow {
+  box-shadow: 0px 20px 40px rgba(45, 51, 53, 0.06);
+}
+
+/* Glassmorphism utility */
+.glass {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+/* Markdown prose styles customized for our theme */
+.prose {
+  color: var(--color-on-surface);
+}
+
+.prose pre {
+  background-color: var(--color-surface-container-low);
+  color: var(--color-on-surface);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+  font-family: monospace;
+  font-size: 0.875rem;
+}
+
+.prose code {
+  color: var(--color-primary);
+  background-color: var(--color-background);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-family: monospace;
+}
+
+.prose h1, .prose h2, .prose h3 {
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-family: inherit; /* inherit Manrope from parent or set directly */
+}
+
+.prose p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  line-height: 1.6;
+}
+
+.prose ul {
+  list-style-type: disc;
+  padding-left: 1.5em;
+  margin-y: 1em;
+}
