@@ -1,0 +1,524 @@
+.arena-shell {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
+  overflow: hidden;
+}
+
+.background-aura {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(
+      950px 540px at 81% -6%,
+      color-mix(in srgb, var(--accent-main) 34%, transparent),
+      transparent 65%
+    ),
+    radial-gradient(
+      650px 430px at 18% 20%,
+      color-mix(in srgb, var(--accent-vivid) 38%, transparent),
+      transparent 72%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--surface-elevated) 62%, transparent),
+      transparent 56%
+    );
+}
+
+.background-aura::before,
+.background-aura::after {
+  content: "";
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(42px);
+  opacity: 0.5;
+  animation: drift 14s ease-in-out infinite;
+}
+
+.background-aura::before {
+  height: 280px;
+  width: 280px;
+  left: 10%;
+  top: 58%;
+  background: color-mix(in srgb, var(--accent-main) 42%, transparent);
+}
+
+.background-aura::after {
+  height: 220px;
+  width: 220px;
+  right: 8%;
+  top: 46%;
+  background: color-mix(in srgb, var(--accent-warm) 36%, transparent);
+  animation-delay: -6s;
+}
+
+.panel-surface {
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--surface-card) 96%, transparent),
+    color-mix(in srgb, var(--surface-overlay) 90%, transparent)
+  );
+  border: 1px solid var(--border-soft);
+  box-shadow:
+    0 30px 52px -36px color-mix(in srgb, var(--accent-main) 40%, #000 60%),
+    0 0 0 1px color-mix(in srgb, var(--accent-vivid) 15%, transparent) inset;
+  transition:
+    border-color 220ms ease,
+    box-shadow 240ms ease,
+    transform 220ms ease;
+}
+
+.panel-surface:hover {
+  border-color: color-mix(in srgb, var(--accent-main) 35%, var(--border-soft));
+  transform: translateY(-1px);
+}
+
+.arena-hero {
+  position: relative;
+  background:
+    radial-gradient(
+      560px 220px at 92% 4%,
+      color-mix(in srgb, var(--accent-vivid) 22%, transparent),
+      transparent 72%
+    ),
+    linear-gradient(
+      152deg,
+      color-mix(in srgb, var(--surface-card) 94%, transparent),
+      color-mix(in srgb, var(--surface-overlay) 88%, transparent)
+    );
+}
+
+.arena-hero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--accent-main) 45%, transparent),
+    transparent
+  );
+}
+
+.hero-grid {
+  display: grid;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .hero-grid {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.hero-copy {
+  max-width: 48rem;
+}
+
+.hero-pill {
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  padding: 0.32rem 0.6rem;
+  font-size: 0.71rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  background: color-mix(in srgb, var(--surface-overlay) 70%, transparent);
+}
+
+.hero-duel {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  min-height: 172px;
+  border-radius: 1.4rem;
+  border: 1px solid var(--border-soft);
+  padding: 1rem;
+  background:
+    radial-gradient(
+      290px 130px at 50% 16%,
+      color-mix(in srgb, var(--accent-main) 20%, transparent),
+      transparent 72%
+    ),
+    color-mix(in srgb, var(--surface-overlay) 80%, transparent);
+}
+
+.hero-duel::before {
+  content: "";
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  top: 40%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--accent-main) 55%, transparent),
+    transparent
+  );
+}
+
+.hero-duel-core {
+  height: 56px;
+  width: 56px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent-main) 46%, transparent);
+  background:
+    radial-gradient(
+      circle at 50% 28%,
+      color-mix(in srgb, var(--accent-vivid) 52%, transparent),
+      transparent 72%
+    ),
+    color-mix(in srgb, var(--surface-card) 84%, transparent);
+  box-shadow:
+    0 0 0 7px color-mix(in srgb, var(--accent-main) 10%, transparent),
+    0 18px 20px -18px color-mix(in srgb, var(--accent-main) 60%, transparent);
+  animation: pulseGlow 2.6s ease-in-out infinite;
+}
+
+.hero-duel-node {
+  position: absolute;
+  top: 23%;
+  display: grid;
+  place-items: center;
+  gap: 2px;
+  height: 58px;
+  width: 58px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent-soft) 45%, transparent);
+  background: color-mix(in srgb, var(--surface-card) 82%, transparent);
+  box-shadow: 0 14px 20px -18px
+    color-mix(in srgb, var(--accent-main) 50%, transparent);
+}
+
+.hero-duel-left {
+  left: 16%;
+}
+
+.hero-duel-right {
+  right: 16%;
+}
+
+.hero-duel-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+}
+
+.hero-duel-sub {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.hero-duel-caption {
+  position: absolute;
+  left: 50%;
+  bottom: 0.88rem;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.hero-stat-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+  border-radius: 1rem;
+  padding: 0.78rem 0.88rem;
+  background: color-mix(in srgb, var(--surface-overlay) 74%, transparent);
+}
+
+.hero-stat-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 2px;
+}
+
+.hero-stat-cyan::before {
+  background: linear-gradient(90deg, #14b8a6, #38bdf8);
+}
+
+.hero-stat-indigo::before {
+  background: linear-gradient(90deg, #6366f1, #818cf8);
+}
+
+.hero-stat-emerald::before {
+  background: linear-gradient(90deg, #10b981, #34d399);
+}
+
+.winner-glow {
+  border-color: color-mix(in srgb, var(--accent-main) 58%, transparent);
+  box-shadow:
+    0 32px 44px -34px color-mix(in srgb, var(--accent-main) 70%, transparent),
+    0 0 0 1px color-mix(in srgb, var(--accent-main) 32%, transparent) inset;
+}
+
+.solution-card-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--accent-vivid) 75%, transparent),
+    color-mix(in srgb, var(--accent-main) 72%, transparent),
+    transparent
+  );
+  opacity: 0.8;
+}
+
+.markdown-body {
+  color: var(--text-secondary);
+  font-size: 0.96rem;
+  line-height: 1.72;
+}
+
+.markdown-body p,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body pre,
+.markdown-body h3,
+.markdown-body h4 {
+  margin-bottom: 0.85rem;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 1.2rem;
+}
+
+.markdown-body h3,
+.markdown-body h4 {
+  color: var(--text-primary);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.markdown-body code {
+  border-radius: 0.4rem;
+  background: color-mix(in srgb, var(--surface-overlay) 78%, transparent);
+  color: color-mix(in srgb, var(--text-primary) 88%, var(--accent-soft));
+  font-family: var(--font-mono);
+  font-size: 0.84em;
+  padding: 0.14rem 0.32rem;
+}
+
+.markdown-body pre {
+  overflow-x: auto;
+  border: 1px solid color-mix(in srgb, var(--accent-soft) 30%, transparent);
+  border-radius: 0.9rem;
+  background: color-mix(in srgb, #010617 88%, var(--surface-overlay));
+  color: #d6e5ff;
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  line-height: 1.52;
+  padding: 0.92rem;
+}
+
+.markdown-body pre code {
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
+  padding: 0;
+}
+
+.arena-entry {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: arenaFadeIn 420ms cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+.input-dock {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.8rem;
+  border-radius: 1.15rem;
+  backdrop-filter: blur(12px);
+  background: linear-gradient(
+    150deg,
+    color-mix(in srgb, var(--surface-overlay) 88%, transparent),
+    color-mix(in srgb, var(--surface-card) 72%, transparent)
+  );
+  box-shadow:
+    0 16px 34px -22px color-mix(in srgb, #000 72%, var(--accent-main) 28%),
+    0 0 0 1px color-mix(in srgb, var(--accent-vivid) 12%, transparent) inset;
+  padding: 0.65rem;
+}
+
+.input-field {
+  width: 100%;
+  resize: none;
+  border: 0;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 0.96rem;
+  line-height: 1.48;
+  outline: none;
+  padding: 0.56rem 0.6rem;
+}
+
+.input-field::placeholder {
+  color: color-mix(in srgb, var(--text-muted) 85%, transparent);
+}
+
+.submit-button {
+  border: 1px solid color-mix(in srgb, var(--accent-main) 45%, transparent);
+  border-radius: 0.85rem;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent-main) 74%, transparent),
+    color-mix(in srgb, var(--accent-vivid) 70%, transparent)
+  );
+  color: #f8fbff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  min-width: 7.2rem;
+  justify-content: center;
+  padding: 0.68rem 0.95rem;
+  transition:
+    transform 180ms ease,
+    filter 220ms ease;
+}
+
+.submit-button:hover {
+  filter: brightness(1.12) saturate(1.05);
+  transform: translateY(-1px);
+}
+
+.submit-button:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+.submit-arrow {
+  transition: transform 180ms ease;
+}
+
+.submit-button:hover .submit-arrow {
+  transform: translateX(3px);
+}
+
+.score-track {
+  position: relative;
+  height: 0.44rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(
+    in srgb,
+    var(--surface-overlay) 75%,
+    var(--border-soft)
+  );
+}
+
+.score-fill {
+  position: absolute;
+  inset: 0;
+  width: var(--score-value);
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent-vivid), var(--accent-main));
+  transition: width 360ms ease;
+}
+
+.hamburger-lines {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentcolor;
+}
+
+.hamburger-lines::before,
+.hamburger-lines::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 16px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentcolor;
+}
+
+.hamburger-lines::before {
+  top: -5px;
+}
+
+.hamburger-lines::after {
+  top: 5px;
+}
+
+@media (max-width: 640px) {
+  .hero-duel {
+    min-height: 166px;
+  }
+
+  .hero-duel-left {
+    left: 12%;
+  }
+
+  .hero-duel-right {
+    right: 12%;
+  }
+
+  .input-dock {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .submit-button {
+    width: 100%;
+  }
+
+  .input-field {
+    min-height: 6.2rem;
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+
+  50% {
+    transform: translateY(-12px) translateX(8px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+@keyframes arenaFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

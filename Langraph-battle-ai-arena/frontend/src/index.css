@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --font-display: "Sora", "Segoe UI", sans-serif;
+  --font-body: "Manrope", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", Consolas, monospace;
+
+  --surface-page: #ebf1ff;
+  --surface-sidebar: #dfe9ff;
+  --surface-card: #ffffff;
+  --surface-overlay: #e9f0ff;
+  --surface-elevated: #f5f8ff;
+
+  --text-primary: #102446;
+  --text-secondary: #28486f;
+  --text-muted: #557aa6;
+
+  --accent-main: #4c6cff;
+  --accent-soft: #7fa4ff;
+  --accent-vivid: #3ea3ff;
+  --accent-warm: #ff8f8f;
+
+  --border-soft: color-mix(in srgb, #274f86 20%, #ffffff 80%);
+}
+
+.dark {
+  --surface-page: #030816;
+  --surface-sidebar: #020f2c;
+  --surface-card: #0a2147;
+  --surface-overlay: #0c2a59;
+  --surface-elevated: #091d45;
+
+  --text-primary: #eff5ff;
+  --text-secondary: #c6dafc;
+  --text-muted: #8ea8d7;
+
+  --accent-main: #6b73ff;
+  --accent-soft: #7fa2ff;
+  --accent-vivid: #36b3ff;
+  --accent-warm: #ff889d;
+
+  --border-soft: color-mix(in srgb, #9cb8ff 20%, transparent);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  text-rendering: optimizeLegibility;
+  background:
+    radial-gradient(
+      1400px 760px at 50% -15%,
+      color-mix(in srgb, var(--accent-main) 22%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      900px 520px at 80% 8%,
+      color-mix(in srgb, var(--accent-vivid) 13%, transparent),
+      transparent 72%
+    ),
+    var(--surface-page);
+  color: var(--text-primary);
+  transition:
+    background-color 240ms ease,
+    color 240ms ease;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+* {
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent-main) 38%, transparent)
+    transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--accent-main) 38%, transparent);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
