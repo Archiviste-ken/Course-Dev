@@ -12,3 +12,7 @@
 => Api
 
   --> backend se communicate
+
+
+
+//why 4 layers of architecture, bcs we need to work in team in professional background

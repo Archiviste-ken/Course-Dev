@@ -2,10 +2,9 @@ import { createBrowserRouter } from "react-router";
 
 
 
-const router =createBrowserRouter([
+const router = createBrowserRouter([
     {
-
         path: "/login"
     }
 
-])}
+])
