@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import'../style/form.scss'
 import {Link} from 'react-router'
+import { useAuth } from '../hooks/useAuth';
 
 const Login = () => {
 
@@ -11,9 +12,19 @@ const Login = () => {
   const [success, setSuccess] = useState("")
 
 
+
+  const{ handleLogin, loading: authLoading } = useAuth()
+
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+
+    handleLogin(username,password)
+    .then((res) => {
+      console.log(res);
+      
+    })
     setError("")
     setLoading(true)
 
