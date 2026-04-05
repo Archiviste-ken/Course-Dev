@@ -1,0 +1,14 @@
+=> UI
+     --> ui dikhana user ko or navigate krna 
+
+=> Hook
+  -> manage krna state and api ko
+
+=> State
+  -> loading
+  -> user
+  -> post 
+
+=> Api
+
+  --> backend se communicate
