@@ -1,5 +1,6 @@
 import React from 'react'
 import "../style/form.scss"
+import { Link } from 'react-router'
 
 
 const Login = () => {
@@ -19,6 +20,7 @@ const Login = () => {
                 <input type="password" placeholder='Password' />
                 <button className="button primary-button" type='submit'>Login</button>
             </form>
+            <p>Don't have an account? <Link to="/register">Register</Link></p>
         </div>
     </main>
   )
