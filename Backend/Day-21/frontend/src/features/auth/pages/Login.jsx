@@ -1,11 +1,13 @@
 import React from 'react'
+import "../style/form.scss"
+
 
 const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
     }
-    
+
   return (
 
 
@@ -15,7 +17,7 @@ const Login = () => {
             <form onSubmit={handleSubmit}   >
                 <input type="text" placeholder='Username' />
                 <input type="password" placeholder='Password' />
-                <button type='submit'>Login</button>
+                <button className="button primary-button" type='submit'>Login</button>
             </form>
         </div>
     </main>
