@@ -3,6 +3,7 @@ import { AuthContext } from "../auth.context";
 import { login } from "../../services/auth.api";
 import { register } from "../../services/auth.api";
 import { getMe } from "../../services/auth.api"; 
+import { set } from "mongoose";
 
 export const useAuth = () => {
 
@@ -16,6 +17,27 @@ export const useAuth = () => {
 
         const response = await login(username, password);
 
+        setUser(response.user);
+
+        setLoading(false);
+    
+
 }
 
+    const handleRegister = async (username, email, password) => {
+        
+
+        setLoading(true)
+        const response = await register(username, email, password)
+        setUser(response.user)
+
+
+        setLoading(false)
+
+    }
+
+
+    return {
+        user, loading, handleLogin, handleRegister
+    }
 }
