@@ -3,9 +3,6 @@
 
 
 
-
-
-
 import {createContext, useState } from 'react';  // React gives you a way to share data globally across components without passing props manually at every level.
 
 export const AuthContext = createContext();
