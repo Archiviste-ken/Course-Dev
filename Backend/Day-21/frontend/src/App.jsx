@@ -6,6 +6,8 @@ import { AuthProvider } from "./features/auth/auth.context";
 
 const App = () => {
   return (
+
+    
     <AuthProvider>
       <RouterProvider router={router} />
     </AuthProvider>
