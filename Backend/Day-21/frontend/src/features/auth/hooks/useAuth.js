@@ -1,5 +1,5 @@
                    // HOOK LAYER
-
+                        // CUSTOM HOOKS FOR AUTHENTICATION
 
 
 import { useContext } from "react";
@@ -7,7 +7,7 @@ import { AuthContext } from "../auth.context";
 import { login } from "../../services/auth.api";
 import { register } from "../../services/auth.api";
 import { getMe } from "../../services/auth.api"; 
-import { set } from "mongoose";
+
 
 export const useAuth = () => {
 
@@ -45,3 +45,4 @@ export const useAuth = () => {
         user, loading, handleLogin, handleRegister
     }
 }
+ 
