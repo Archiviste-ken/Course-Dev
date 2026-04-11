@@ -7,9 +7,9 @@
 
 import axios from "axios";
 
-const api = axios.create({
-  baseURL: "http://localhost:3000/api/auth",
-  withCredentials: true,
+const api = axios.create({  // axios.create() is used to create your own custom Axios instance.
+  baseURL: "http://localhost:3000/api/auth", 
+  withCredentials: true,  // send cookies with requests everytime.
 });
 
 export async function login(username, password) {
