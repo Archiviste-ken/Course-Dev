@@ -44,5 +44,5 @@ export const useAuth = () => {
     return {
         user, loading, handleLogin, handleRegister
     }
-}
+}  
  
