@@ -1,5 +1,5 @@
 => UI
-     --> ui dikhana user ko or navigate krna 
+     --> ui dikhana user ko or navigate krna --- done
 
 => Hook
   -> manage krna state and api ko
@@ -9,7 +9,7 @@
   -> user
   -> post 
 
-=> Api
+=> Api              --- done
 
   --> backend se communicate
 
