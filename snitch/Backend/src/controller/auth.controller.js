@@ -9,7 +9,13 @@ async function sendTokenResponse(user, res) {
     const token = jwt.sign({
         id: user._id,
     },config.JWT_SECRET, { expiresIn: "7d" })
+
+            res.cookie("token", token)
+
+
         res.status(200).json({
+            message: "User registered successfully",
+            success: true,
             token,
             user: {
                 id: user._id,
@@ -48,6 +54,7 @@ export const register = async (req, res) => {
             fullName
         })  
         
+        await sendTokenResponse(user, res, "User registered successfully")
         
     } catch (error) {
         console.log(error)
