@@ -134,6 +134,8 @@ async function registerController(req, res) {
   try {
     const { username, email, password, bio, profile_image } = req.body;
 
+    console.log({ username, email, password });
+    
     // ✅ validation
     if (!username || !email || !password) {
       return res.status(400).json({
