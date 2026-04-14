@@ -111,9 +111,20 @@ async function LikePostController(req, res) {
  }
 
 
+async function getFeedController(req,res) {
+
+  const posts =  await postModel.find()
+
+  res.status(200).json({
+    message: "Here is the feed",
+    posts
+  })
+}
+
 module.exports = {
   createPostController,
   getPostController,
   getPostDetailsController,
-  LikePostController
-};
+  LikePostController,
+  getFeedController
+}
