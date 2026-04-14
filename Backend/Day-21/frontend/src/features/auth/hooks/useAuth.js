@@ -32,7 +32,9 @@ export const useAuth = () => {
         
 
         setLoading(true)
+        
         const response = await register(username, email, password)
+
         setUser(response.user)
 
 
