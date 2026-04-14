@@ -113,7 +113,7 @@ async function LikePostController(req, res) {
 
 async function getFeedController(req,res) {
 
-  const posts =  await postModel.find()
+  const posts =  await postModel.find().populate("user").select("-user.password")
 
   res.status(200).json({
     message: "Here is the feed",
