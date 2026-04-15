@@ -1,26 +1,38 @@
-import React from "react";
-
-import "../style/feed.scss";
+import React, { useEffect } from 'react'
+import "../style/feed.scss"
+import Post from '../components/Post'
+import { usePost } from '../hook/usePost'
+// import Nav from '../../shared/components/Nav'
 
 const Feed = () => {
-  return (
-    <main className="feed-page">
-      <div className="feed">
-        <div className="posts">
-            <div className="post">
-          <div className="user">
-            <img src="https://images.unsplash.com/photo-1774579892278-e305439f05dd?q=80&w=736&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-            <p>Username</p>
-          </div>
-          <img src="https://images.unsplash.com/photo-1775510978826-e95b14db6ae6?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="" />
-          <div className="bottom">
-            <p className="caption">Caption caption</p>
-          </div>
-          </div>
-        </div>
-      </div>
-    </main>
-  );
-};
 
-export default Feed;
+    const { feed, handleGetFeed,loading, handleLike, handleUnLike } = usePost()
+
+    useEffect(() => { 
+        handleGetFeed()
+    }, [])
+
+    if(loading || !feed){
+        return (<main><h1>Feed is loading...</h1></main>)
+    }
+
+    console.log(feed)
+
+
+
+
+    return (
+        <main className='feed-page' >
+            <Nav/>
+            <div className="feed">
+                <div className="posts">
+                    {feed.map(post=>{
+                        return <Post user={post.user} post={post} loading={loading} handleLike={handleLike}  handleUnLike={handleUnLike}/>
+                    })}
+                </div>
+            </div>
+        </main>
+    )
+}
+
+export default Feed
