@@ -205,7 +205,12 @@ async function loginController(req, res) {
     const identifier = username || email;
 
     const user = await userModel.findOne({
-      $or: [{ username: identifier }, { email: identifier }],
+
+      $or: [{ username: identifier },
+        
+        
+        { email: identifier }],
+
     }).select("+password");
 
 console.log("REQ BODY:", req.body);
