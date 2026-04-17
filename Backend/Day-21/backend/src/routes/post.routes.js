@@ -40,14 +40,14 @@ postRouter.get("/details/:postId", identifyUser, postController.getPostDetailsCo
 
 postRouter.post("/like/:postId", identifyUser, postController. LikePostController)
 
+
 /**
  * @route GET /api/posts/feed
- * @desc get all the posts from the database
- * @access Private (requires authentication)
+ * @description get all the post created in the DB
+ * @access private
  */
+
 postRouter.get("/feed", identifyUser, postController.getFeedController)
-
-
 
 
 
