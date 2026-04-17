@@ -31,13 +31,13 @@ const navigate = useNavigate();
             <h1>Register</h1>
             <form onSubmit={handleSubmit}   >
                 <input 
-                onChange ={(e) => {setUsername(e.target.value)}} 
+                onChange = {(e)=>{setUsername(e.target.value)}}
                 type="text" placeholder='Username' />
                 <input 
-                onChange ={(e) => {setEmail(e.target.value)}} 
+                onChange = {(e)=>{setEmail(e.target.value)}}
                 type="email" placeholder='Email' />
                 <input 
-                onChange ={(e) => {setPassword(e.target.value)}} 
+                onChange = {(e)=> {setPassword(e.target.value)}}
                 type="password" placeholder='Password' />
                 <button className="button primary-button" type='submit'>Register</button>
             </form>
