@@ -42,6 +42,31 @@
             }
         }
 
+        .icons{
+
+            display: flex;
+            justify-content: space-between;
+
+            .left{
+                display: flex;
+                gap: 0.7rem
+            }
+
+         
+           
+           svg{
+            width: 1rem;
+            aspect-ratio: 1/1;
+            color: white;
+            
+           }   
+           button{
+            background-color:transparent ;
+            border: none;
+            outline: none;
+           }  
+        }
+
         img{
             width: 100%
         }
