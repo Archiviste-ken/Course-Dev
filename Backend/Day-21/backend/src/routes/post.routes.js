@@ -38,7 +38,7 @@ postRouter.get("/details/:postId", identifyUser, postController.getPostDetailsCo
 */
 
 
-postRouter.post("/like/:postId", identifyUser, postController. LikePostController)
+postRouter.post("/like/:postId", identifyUser, postController.likePostController)
 
 
 /**
