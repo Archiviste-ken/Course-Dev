@@ -3,7 +3,7 @@ import { createBrowserRouter } from "react-router"; // react-router is a popular
 import Login from "./features/auth/pages/Login";
 import Register from "./features/auth/pages/Register";
 import Feed from "./features/posts/pages/Feed"
-import CreatePost from "./features/posts/pages/createPost";
+import CreatePost from "./features/posts/pages/CreatePost";
 
 
 export const router = createBrowserRouter([  // createBrowserRouter is a function from react-router that creates a router object based on the provided route configuration. It takes an array of route objects as an argument, where each route object defines a path and the corresponding component to render when that path is accessed.

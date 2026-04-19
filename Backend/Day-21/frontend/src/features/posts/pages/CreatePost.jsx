@@ -13,7 +13,7 @@ const CreatePost = () => {
         </form>
       </div>
 
-      <div></div>
+     
     </main>
   );
 };
