@@ -6,7 +6,7 @@ import { usePost } from "../hook/usePost";
 import Nav from "../../shared/components/nav";
 
 const Feed = () => {
-  const { feed, handleGetFeed, loading } = usePost();
+  const { feed, handleGetFeed, loading, handleLike, handleUnLike } = usePost();
 
   useEffect(() => {
     handleGetFeed();
@@ -33,6 +33,8 @@ const Feed = () => {
                 key={post?._id || post?.id || index}
                 user={post?.user}
                 post={post}
+                handleLike={handleLike}
+                handleUnLike={handleUnLike}
               />
             );
           })}
