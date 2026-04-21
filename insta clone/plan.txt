@@ -1,0 +1,18 @@
+=> UI
+     --> ui dikhana user ko or navigate krna --- done
+
+=> Hook
+  -> manage krna state and api ko
+
+=> State
+  -> loading
+  -> user
+  -> post 
+
+=> Api              --- done
+
+  --> backend se communicate
+ 
+
+
+//why 4 layers of architecture, bcs we need to work in team in professional background

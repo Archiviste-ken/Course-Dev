@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "@reduxjs/toolkit": "^2.11.2",
+    "dot-env": "^0.0.1",
     "express": "^5.2.1",
+    "mongoose": "^9.5.0",
     "react-redux": "^9.2.0"
   }
 }
