@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@mediapipe/tasks-vision": "^0.10.34",
     "@reduxjs/toolkit": "^2.11.2",
     "dot-env": "^0.0.1",
     "express": "^5.2.1",
