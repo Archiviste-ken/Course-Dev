@@ -26,7 +26,7 @@ async function identifyUser(req, res, next){
 
    try{
 
-    const decoded =   jwt.verify(  // if token is right and not expired
+    const decoded = jwt.verify(  // if token is right and not expired
 
         token,
         process.env.JWT_SECRET, // checks if token is expire or not!!!

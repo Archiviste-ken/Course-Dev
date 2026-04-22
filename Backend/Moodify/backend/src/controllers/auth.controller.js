@@ -145,7 +145,7 @@ async function logoutUser(req, res){
     res.status(200).json({
         message: "Logout Successfully"
     })
-}
+}   
 
 module.exports = {
     registerUser,
