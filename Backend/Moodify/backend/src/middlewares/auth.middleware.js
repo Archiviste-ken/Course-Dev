@@ -14,6 +14,15 @@ async function identifyUser(req, res, next){
 
     }
 
+    const isTokenBlacklisted = await blacklistModel.findONe({
+        token
+    })
+
+    if(isTokenBlacklisted){
+        return res.status(401).json({
+            message: "Invalid token"
+        })
+    }
 
    try{
 
