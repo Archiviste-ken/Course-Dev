@@ -117,7 +117,20 @@ async function loginUser(req,res){
     })
 }
 
+
+async function getMe(req,res) {
+
+    const user = await userModel.findById(req.user.id)
+
+
+    res.status(200).json({
+        message: " user fetched Successfully",
+        user
+    })
+}
+
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    getMe
 }

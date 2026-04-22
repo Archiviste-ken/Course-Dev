@@ -9,7 +9,7 @@ router.post('/register', authController.registerUser)
 router.post("/login", authController.loginUser)
 
 
-router.get("/get-me", authMiddleware.identifyUser)
+router.get("/get-me", authMiddleware.identifyUser, authController.getMe)
 
 module.exports = router;
 
