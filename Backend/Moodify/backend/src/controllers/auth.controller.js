@@ -61,18 +61,19 @@ async function registerUser(req,res){
 
 
 
-
 async function loginUser(req,res){
 
     const {email, password, username} = req.body;
 
 
     const user = await userModel.findOne({
+
         $or: [
             { email },
             { username }
         ]
     })
+
 
     if(!user){
 
@@ -91,6 +92,7 @@ async function loginUser(req,res){
             message: "Invalid credentials"
         })
     }
+    
 
     const token = jwt.sign({
         id: user._id,

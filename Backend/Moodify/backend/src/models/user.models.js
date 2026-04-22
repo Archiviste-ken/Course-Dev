@@ -16,13 +16,13 @@ const userSchema = new mongoose.Schema({
 
     email: {
         type: String,
-        required: [true, "Email is required"],
+        require: [true, "Email is required"],
         unique: [true, "Email must be unique"],
     }
 
 })
 
 
-const userModel = mongoose.model("users",   userSchema)
+const userModel = mongoose.model("users",userSchema)
 
 module.exports = userModel;
