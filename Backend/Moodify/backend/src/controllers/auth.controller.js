@@ -72,7 +72,7 @@ async function loginUser(req,res){
             { email },
             { username }
         ]
-    })
+    }).select("+password")      // REMEMBER
 
 
     if(!user){
@@ -127,6 +127,15 @@ async function getMe(req,res) {
         message: " user fetched Successfully",
         user
     })
+}
+
+
+async function logoutUser(req, res){
+
+
+    const token = req.cookies.token
+
+    res.clearCookie("token")
 }
 
 module.exports = {
