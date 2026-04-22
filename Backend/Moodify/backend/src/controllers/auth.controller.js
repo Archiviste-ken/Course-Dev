@@ -146,6 +146,24 @@ async function logoutUser(req, res){
     })
 }   
 
+
+
+// @ how redis saves data :-
+
+/**
+ *  key value
+ * js object
+ * {
+ * username: 'test,
+ * email: 'test@test.com'
+ * 
+ * } 
+ * 
+ */
+
+
+
+
 module.exports = {
     registerUser,
     loginUser,
