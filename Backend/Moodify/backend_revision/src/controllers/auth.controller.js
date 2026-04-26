@@ -121,6 +121,15 @@ async function userLogin(req,res) {
 }
 
 
+
+async function getUser(req,res){
+
+        const  = await userModel findOne
+
+        
+
+}
+
 module.exports = {
     userLogin,
     userRegister
