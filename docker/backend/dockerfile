@@ -1,14 +1,18 @@
-FROM node:20-alpine
+FROM node:20-alpine 
+
+ # 20-alpine is a lightweight version of Node.js based on Alpine Linux
 
 
-COPY ./package.json .
-COPY ./package-lock.json .
+     COPY package.json .
+    # Copy the package.json file to the container
 
-RUN npm install
+    COPY package-lock.json .
+    # Copy the package-lock.json file to the container
+
+    RUN npm install
+
+    COPY . .
+    # Copy the rest of the application code to the container
 
 
-COPY ./server.js .
-
-
-
-CMD ["node","server.js"]
+    CMD ["node", "server.js"]
