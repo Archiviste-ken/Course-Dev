@@ -2,18 +2,23 @@ FROM node:20-alpine
 
  # 20-alpine is a lightweight version of Node.js based on Alpine Linux
 
+ WORKDIR /app
 
-     COPY package.json .
+     COPY package.json /app
     # Copy the package.json file to the container
 
-    COPY package-lock.json .
+    COPY package-lock.json /app
     # Copy the package-lock.json file to the container
 
     RUN npm install
 
-    COPY . .
+    COPY . /app
     # Copy the rest of the application code to the container
 
 
     CMD ["node", "server.js"]
     # Command to run the application when the container starts
+
+
+
+    # . means current directory, so it copies everything in the current directory to the container's working directory
