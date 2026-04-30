@@ -1,5 +1,5 @@
 const userModel = require("../models/user.model");
-const bcyrpt = require("bcryptjs");
+const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken");
 
 async function userRegister(req, res) {
@@ -15,7 +15,7 @@ async function userRegister(req, res) {
     });
   }
 
-  const hash = await bcyrpt.hash(password, 10);
+  const hash = await bcrypt.hash(password, 10);
 
   const user = await userModel.create({
     username,
