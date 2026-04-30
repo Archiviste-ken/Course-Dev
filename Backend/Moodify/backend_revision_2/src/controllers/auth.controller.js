@@ -91,3 +91,10 @@ async function userLogin(req, res) {
         }
     })
 }
+
+
+module.exports = {
+
+    userRegister,
+    userLogin
+}
