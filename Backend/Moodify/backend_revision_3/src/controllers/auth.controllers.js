@@ -39,7 +39,7 @@ async function userRegister(req, res) {
   return res.status(201).json({
     message: "User registered Successfully",
     user: {
-      id: user._id,
+      id: user.id,
       username: user.username,
       email: user.email,
     },
@@ -90,4 +90,15 @@ async function userLogin(req, res) {
   });
 }
 
-module.exports = { userRegister, userLogin };
+async function getUser(req,res){
+
+    const user = await userModel.findById(req.user.id)
+
+    return res.status(200).json({
+        message: "User fetched Successfully",
+        user,
+    })
+
+}
+
+module.exports = { userRegister, userLogin, getUser };
