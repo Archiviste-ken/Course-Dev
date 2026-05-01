@@ -1,4 +1,5 @@
 const userModel = require("../models/user.models")
+const blacklistModel = require("../models/blacklist.models");
 const jwt = require("jsonwebtoken");
 const redis = require("../config/cache")
 
@@ -6,7 +7,7 @@ const redis = require("../config/cache")
 async function identifyUser(req, res, next){
 
     const token = req.cookies.token;
-
+ 
     if(!token){
 
         return res.status(401).json({
