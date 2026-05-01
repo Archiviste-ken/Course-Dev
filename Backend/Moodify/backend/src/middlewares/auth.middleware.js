@@ -12,7 +12,6 @@ async function identifyUser(req, res, next){
         return res.status(401).json({
             message: "Token not provided"
         })
-
     }
 
     const isTokenBlacklisted = await redis.get(token)
