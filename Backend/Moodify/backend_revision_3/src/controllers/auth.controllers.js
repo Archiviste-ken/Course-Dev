@@ -46,11 +46,48 @@ async function userRegister(req, res) {
   });
 }
 
+async function userLogin(req, res) {
+  const { username, email, password } = req.body;
 
-async function userLogin(req,res) {
+  const user = await userModel.findOne({
+    $or: [{ username }, { email }],
+  });
 
-    const{username, email } = res.cookies.token
+  if (!user) {
+    return res.status(400).json({
+      message: "Invalid credentials",
+    });
+  }
 
+  const isPasswordValid = await bcrypt.compare(password, user.password);
+
+  if (!isPasswordValid) {
+    return res.status(400).json({
+      message: "Invalid credentials",
+    });
+  }
+
+  const token = jwt.sign(
+    {
+      id: user._id,
+      user: user.username,
+    },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: "3d",
+    },
+  );
+
+  res.cookie("token", token);
+
+  return res.status(201).json({
+    message: "User logged in Successfully",
+    user: {
+      id: user._id,
+      user: user.username,
+      email: user.email,
+    },
+  });
 }
 
-module.exports = { userRegister, userLogin};
+module.exports = { userRegister, userLogin };
