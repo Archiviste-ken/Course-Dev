@@ -1,6 +1,8 @@
 const userModel = require("../models/user.model");
 const bcrypt = require("bcryptjs")
 const jwt = require("jsonwebtoken");
+const blacklistModel = require("../models/blacklist.models");
+
 
 async function userRegister(req, res) {
   const { username, email, password } = req.body;
@@ -47,11 +49,11 @@ async function userRegister(req, res) {
 }
 
 async function userLogin(req, res) {
-  const { username, email, password } = req.body;
+  const { username, email, password } = req.body
 
   const user = await userModel.findOne({
     $or: [{ username }, { email }],
-  });
+  }).select("+password")
 
   if (!user) {
     return res.status(400).json({
@@ -93,20 +95,40 @@ async function userLogin(req, res) {
 }
 
 
-async function getMe(req,res){
+async function getMe(req,res) {
 
-  const user = await userModel.findOne(req.user.id)
+    const user = await userModel.findById(req.user.id)
+
+
+    res.status(200).json({
+        message: " user fetched Successfully",
+        user
+    })
+}
+
+
+async function logoutUser(req,res){
+
+  const token = req.cookies.token
+
+  res.clearCookie("token")
+
+
+  await redis.set(token,Date.now().toString())
+
 
   res.status(200).json({
-    message: "User fetched successfully",
-    user
-  })
+    message: "logout successfully"
+  }
 
+  )
 }
 
 
 module.exports = {
 
     userRegister,
-    userLogin
+    userLogin,
+    getMe,
+    logoutUser
 }
