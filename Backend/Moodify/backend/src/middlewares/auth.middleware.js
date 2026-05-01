@@ -1,15 +1,13 @@
-const userModel = require("../models/user.models")
 const blacklistModel = require("../models/blacklist.models");
-const jwt = require("jsonwebtoken");
+const userModel = require("../models/user.models");
 const redis = require("../config/cache")
+const jwt = require("jsonwebtoken");
 
 
-async function identifyUser(req, res, next){
-
+async function identifyUser(req, res, next) {
     const token = req.cookies.token;
- 
-    if(!token){
 
+    if (!token) {
         return res.status(401).json({
             message: "Token not provided"
         })
@@ -17,34 +15,26 @@ async function identifyUser(req, res, next){
 
     const isTokenBlacklisted = await redis.get(token)
 
-    if(isTokenBlacklisted){
+    if (isTokenBlacklisted) {
         return res.status(401).json({
             message: "Invalid token"
         })
     }
 
-   try{
-
-    const decoded = jwt.verify(  // if token is right and not expired
-
-        token,
-        process.env.JWT_SECRET, // checks if token is expire or not!!!
-    )
+    try {
+        const decoded = jwt.verify(
+            token,
+            process.env.JWT_SECRET,
+        )
 
         req.user = decoded
-        next();
 
-   }catch(err){
-
+        next()
+    } catch (err) {
         return res.status(401).json({
-
-    message: "Invalid or expired token"
-
+            message: "Invalid token"
         })
-
-   }    
-
-
+    }
 }
 
-module.exports = {identifyUser}
+module.exports = { identifyUser }
