@@ -1,11 +1,12 @@
-import FaceExpression from './features/Expression/components/FaceExpresson.jsx'
+import { RouterProvider } from 'react-router'
+import { router } from './app.routes'
 
 function App() {
 
 
   return (
     <>
-      <FaceExpression/>
+      <RouterProvider router= {router} />
     </>
   )
 }
