@@ -15,7 +15,7 @@ async function userRegister(req, res) {
     });
   }
 
-  const hash = await bcrypt.hash(password, 10);
+   const hash = await bcrypt.hash(password, 10);
 
   const user = await userModel.create({
     username,
@@ -30,7 +30,7 @@ async function userRegister(req, res) {
     },
     process.env.JWT_SECRET,
     {
-      expireIn: "3d",
+      expiresIn: "3d",
     },
   );
 
@@ -59,7 +59,7 @@ async function userLogin(req, res) {
     });
   }
 
-  const isPasswordValid = await bcrypt.compare(password, user.username);
+  const isPasswordValid = await bcrypt.compare(password, user.password);
 
   if (!isPasswordValid) {
     return res.status(400).json({
@@ -74,7 +74,7 @@ async function userLogin(req, res) {
     },
     process.env.JWT_SECRET,
     {
-      expireIn: "3d",
+      expiresIn: "3d",
     },
   );
 
