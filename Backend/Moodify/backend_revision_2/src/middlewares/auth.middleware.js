@@ -1,3 +1,4 @@
+const blacklistModel = require("../models/blacklist.models")
 const userModel = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 
@@ -8,6 +9,19 @@ async function identifyUser(req, res, next) {
     return res.status(401).json({
       message: "Token not provided",
     });
+  }
+
+
+  const isTokenBlacklisted = await blacklistModel.findOne({
+    token
+  })
+
+
+  if(isTokenBlacklisted) {
+
+    return res.status(401).json({
+        message: "Invalid token"
+    })
   }
 
   try {
