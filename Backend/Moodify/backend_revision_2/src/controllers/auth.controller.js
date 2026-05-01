@@ -63,7 +63,7 @@ async function userLogin(req, res) {
 
   if (!isPasswordValid) {
     return res.status(400).json({
-      message: " Invalid Credentials",
+      message: "Invalid Credentials",
     });
   }
 
@@ -90,6 +90,18 @@ async function userLogin(req, res) {
             email: user.email,
         }
     })
+}
+
+
+async function getMe(req,res){
+
+  const user = await userModel.findOne(req.user.id)
+
+  res.status(200).json({
+    message: "User fetched successfully",
+    user
+  })
+
 }
 
 
