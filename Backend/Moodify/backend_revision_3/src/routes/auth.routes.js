@@ -5,7 +5,7 @@ const router = Router()
 
 router.post("/register",authController.userRegister)
 
-router.login("/login",authController.userLogin)
+router.post("/login",authController.userLogin)
 
 
 
