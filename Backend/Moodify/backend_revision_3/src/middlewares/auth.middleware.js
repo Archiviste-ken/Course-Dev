@@ -1,6 +1,7 @@
 const userModel = require("../models/user.model");
-const jwt = require("jsonwebtoken")
-
+const blacklistModel = require("../models/blacklist.model");
+const jwt = require("jsonwebtoken");
+const redis = require("../config/cache");
 
 async function identifyUser(req, res, next) {
   const token = req.cookies.token;
@@ -8,6 +9,14 @@ async function identifyUser(req, res, next) {
   if (!token) {
     return res.status(401).json({
       message: "Token not provided",
+    });
+  }
+
+  const isTokenblacklisted = await redis.get(token);
+
+  if (isTokenblacklisted) {
+    return res.status(401).json({
+      message: "Invalid Token",
     });
   }
 
@@ -24,6 +33,4 @@ async function identifyUser(req, res, next) {
   }
 }
 
-
-
-module.exports = { identifyUser }
+module.exports = { identifyUser };
