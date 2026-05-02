@@ -1,6 +1,8 @@
 const userModel = require("../models/user.model");
+const blacklistModel = require("../models/blacklist.model")
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const redis = require("../config/cache");
 
 async function userRegister(req, res) {
   const { username, email, password } = req.body;
@@ -49,9 +51,11 @@ async function userRegister(req, res) {
 async function userLogin(req, res) {
   const { username, email, password } = req.body;
 
-  const user = await userModel.findOne({
-    $or: [{ username }, { email }],
-  }).select("+password")
+  const user = await userModel
+    .findOne({
+      $or: [{ username }, { email }],
+    })
+    .select("+password");
 
   if (!user) {
     return res.status(400).json({
@@ -90,15 +94,36 @@ async function userLogin(req, res) {
   });
 }
 
-async function getUser(req,res){
+async function getUser(req, res) {
+  const user = await userModel.findById(req.user.id);
 
-    const user = await userModel.findById(req.user.id)
-
-    return res.status(200).json({
-        message: "User fetched Successfully",
-        user,
-    })
-
+  return res.status(200).json({
+    message: "User fetched Successfully",
+    user,
+  });
 }
 
-module.exports = { userRegister, userLogin, getUser };
+async function logoutUser(req, res) {
+
+  const token = req.cookies.token;
+
+
+  console.log(token.length);
+  
+
+  if(!token){
+    return res.status(401).json({
+      message: "The user is already logged Out"
+    })
+  }
+
+  res.clearCookie("token");
+
+  await redis.set(token, Date.now().toString(), "EX", 60 * 60);
+
+  res.status(200).json({
+    message: "User loggedOut Successfully",
+  });
+}
+
+module.exports = { userRegister, userLogin, getUser, logoutUser };
