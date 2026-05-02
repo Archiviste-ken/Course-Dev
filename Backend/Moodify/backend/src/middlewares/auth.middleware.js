@@ -1,40 +1,36 @@
 const blacklistModel = require("../models/blacklist.models");
 const userModel = require("../models/user.models");
-const redis = require("../config/cache")
+const redis = require("../config/cache");
 const jwt = require("jsonwebtoken");
 
-
 async function identifyUser(req, res, next) {
-    const token = req.cookies.token;
+  const token = req.cookies.token;
 
-    if (!token) {
-        return res.status(401).json({
-            message: "Token not provided"
-        })
-    }
+  if (!token) {
+    return res.status(401).json({
+      message: "Token not provided",
+    });
+  }
 
-    const isTokenBlacklisted = await redis.get(token)
+  const isTokenBlacklisted = await redis.get(token);
 
-    if (isTokenBlacklisted) {
-        return res.status(401).json({
-            message: "Invalid token"
-        })
-    }
+  if (isTokenBlacklisted) {
+    return res.status(401).json({
+      message: "Invalid token",
+    });
+  }
 
-    try {
-        const decoded = jwt.verify(
-            token,
-            process.env.JWT_SECRET,
-        )
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        req.user = decoded
+    req.user = decoded;
 
-        next()
-    } catch (err) {
-        return res.status(401).json({
-            message: "Invalid token"
-        })
-    }
+    next();
+  } catch (err) {
+    return res.status(401).json({
+      message: "Invalid token",
+    });
+  }
 }
 
-module.exports = { identifyUser }
+module.exports = { identifyUser };
