@@ -1,7 +1,8 @@
 @use "./button.scss";
+
+
 * {
-  margin: 0%;
-  padding: 0%;
+padding: 0%;
   box-sizing: border-box;
 }
 
@@ -23,4 +24,10 @@ body,
     "Open Sans",
     "Helvetica Neue",
     sans-serif;
+}
+
+
+a{
+  color: #dd4200;
+  text-decoration: none;
 }
