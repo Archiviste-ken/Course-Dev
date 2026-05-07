@@ -29,10 +29,19 @@ export const useAuth = () => {
     setLoading(false);
   }
 
-  async function logoutUser() {
+  async function handlelogout() {
     setLoading(true);
     const data = await logOut();
     setUser(null);
     setLoading(false);
   }
+
+  return {
+    user,
+    loading,
+    handleRegister,
+    handleLogin,
+    handlelogout,
+    handleGetMe,
+  };
 };
