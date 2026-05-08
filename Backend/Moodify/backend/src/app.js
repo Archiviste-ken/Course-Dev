@@ -1,25 +1,26 @@
-const express = require("express")
+const express = require("express");
 const cookieParser = require("cookie-parser");
-const cors = require("cors")
+const cors = require("cors");
 
-const app = express()
+const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({
+app.use(
+  cors({
     origin: "http://localhost:5173",
-    credentials: true
-}))
-
+    credentials: true,
+  }),
+);
 
 /**
  * Router
  */
 
+const authRoutes = require("./routes/auth.route");
+const songRoutes = require("./routes/song.routes");
 
-const authRoutes = require("./routes/auth.route")
+app.use("/api/auth", authRoutes);
+app.use("/api/songs", songRoutes);
 
-app.use("/api/auth", authRoutes)
-
-
-module.exports = app
+module.exports = app;
