@@ -1,9 +1,9 @@
 import "../style/register.scss";
-import React, { use } from "react";
+import React, { useState } from "react";
 import FormGroup from "../components/FormGroup";
 import { Link } from "react-router";
-import { useState } from "react";
-import navigate from "react-router";
+import { useNavigate } from "react-router";
+import { useAuth } from "../hooks/useAuth";
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -12,7 +12,7 @@ const Register = () => {
 
   const navigate = useNavigate();
 
-  const [loading, handleRegister] = useAuth();
+  const { handleRegister } = useAuth();
 
   async function handleSubmit(e) {
     e.preventDefault();
