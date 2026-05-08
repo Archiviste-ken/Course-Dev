@@ -8,15 +8,25 @@ import { useNavigate } from "react-router";
 const Login = () => {
   const { loading, handleLogin } = useAuth();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
-    await handleLogin({ email, password})
-    navigate("/")
+
+    const response = await handleLogin({
+      email,
+      password,
+    });
+
+    if (!response.success) {
+      alert(response.message);
+      return;
+    }
+
+    navigate("/");
   }
 
   return (
@@ -31,9 +41,11 @@ const Login = () => {
             placeholder="Enter your email"
           />
           <FormGroup
-          value= {password}
-          onChange= {(e) => setPassword(e.target.value)}
-          label="Password" placeholder="Enter your password" />
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            label="Password"
+            placeholder="Enter your password"
+          />
           <button className="button" type="submit">
             Login
           </button>
