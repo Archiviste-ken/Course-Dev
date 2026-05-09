@@ -1,6 +1,14 @@
-app.use(express.json())
-import express from "express"
+import express from "express";
 
-const app = express()
+import authRouter from "../src/routes/auth.routes.js";
 
-export default app
+const app = express();
+
+app.use(express.json());
+/**
+ * Routes
+ */
+
+app.use("/api/auth", authRouter);
+
+export default app;
