@@ -1,6 +1,6 @@
-const songModel = require("../models/song.model");
-const storageService = require("../services/storage.service");
-const id3 = require("node-id3");
+const songModel = require("../models/song.model")
+const storageService = require("../services/storage.service")
+const id3 = require("node-id3")
 
 
 async function uploadSong(req, res) {
@@ -37,4 +37,20 @@ async function uploadSong(req, res) {
 
 }
 
-module.exports = { uploadSong };
+async function getSong(req, res) {
+
+    const { mood } = req.query
+
+    const song = await songModel.findOne({
+        mood,
+    })
+
+    res.status(200).json({
+        message: "song fetched successfully.",
+        song,
+    })
+
+}
+
+
+module.exports = { uploadSong, getSong }
