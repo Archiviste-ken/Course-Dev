@@ -11,4 +11,6 @@ const router = Router();
 
 router.post("/",upload.single("song"), songController.uploadSong)
 
+router.get('/',songController.getSong)
+
 module.exports = router;
