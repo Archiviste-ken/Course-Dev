@@ -8,9 +8,10 @@
 
 export async function registerUser(req, res, next) {
   try {
-    throw new Error("User already exists, with same email.");
+    console.log(user);
+    
   } catch (err) {
-    err.status = 409;
+    err.status = 500;
     next(err);
   }
 }
