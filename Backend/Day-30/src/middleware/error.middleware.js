@@ -1,6 +1,7 @@
 function handleError(err, req, res, next) {
-  res.status(500).json({
+  res.status(err.status).json({
     message: err.message,
+    stack: err.stack
   });
 }
 
