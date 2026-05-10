@@ -1,0 +1,5 @@
+- Authentication
+- Chat with AI
+- Chat history
+- Message Storage
+- AI with internet research feature 
