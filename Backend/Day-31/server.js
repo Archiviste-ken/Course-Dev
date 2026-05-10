@@ -1,3 +1,4 @@
+import { log } from "console";
 import app from "./src/app.js";
 import { createServer } from "http";
 import { Server } from "socket.io";
@@ -8,7 +9,11 @@ const io = new Server(httpServer, {
 });
 
 io.on("connection", (socket) => {
-  // ...
+  console.log("new connection created");
+
+  socket.on("message", () => {
+    console.log("User fired message event");
+  }); // on means event ko listen
 });
 
 httpServer.listen(3000, () => {
