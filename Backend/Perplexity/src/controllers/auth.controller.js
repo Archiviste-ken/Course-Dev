@@ -1,6 +1,6 @@
-import userModel from "../models/user.model";
+import userModel from "../models/user.model.js";
 
-export async function registerUser(req, res) {
+async function registerUser(req, res) {
   const { username, email, password } = req.body;
 
   const isUserAlreadyExists = await userModel.findOne({
@@ -43,3 +43,6 @@ export async function registerUser(req, res) {
     },
   });
 }
+
+
+export default {registerUser}
