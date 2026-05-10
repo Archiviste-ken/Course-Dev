@@ -14,7 +14,7 @@ io.on("connection", (socket) => {
   socket.on("message", (msg) => {
     console.log("User fired message event");
     console.log(msg);
-    
+    io.emit("abc");
   }); // on means event ko listen
 });
 
