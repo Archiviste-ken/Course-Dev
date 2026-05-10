@@ -11,8 +11,10 @@ const io = new Server(httpServer, {
 io.on("connection", (socket) => {
   console.log("new connection created");
 
-  socket.on("message", () => {
+  socket.on("message", (msg) => {
     console.log("User fired message event");
+    console.log(msg);
+    
   }); // on means event ko listen
 });
 
