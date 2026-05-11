@@ -1,4 +1,5 @@
 import userModel from "../models/user.model.js";
+import { sendEmail } from "../services/mail.service.js";
 
 async function registerUser(req, res) {
   const { username, email, password } = req.body;
@@ -21,21 +22,21 @@ async function registerUser(req, res) {
     email,
   });
 
-  const token = jwt.sign(
-    {
-      id: user._id,
-      username: user.username,
-    },
-    process.env.JWT_SECRET,
-    {
-      expiresIn: "3d",
-    },
-  );
-
-  res.cookie("cookie", cookie);
-
-  return res.status(201).json({
-    message: "The User is registered successfully",
+  await sendEmail({
+    to: email,
+    subject: "Welcome to Perplexity",
+    html: `
+                <p>Hi ${username},</p>
+                <p>Thank you for registering at <strong>Perplexity</strong>. We're excited to have you on board!</p>
+                <p>Please verify your email address by clicking the link below:</p>
+                <a href="http://localhost:3000/api/auth/verify-email?token=${emailVerificationToken}">Verify Email</a>
+                <p>If you did not create an account, please ignore this email.</p>
+                <p>Best regards,<br>The Perplexity Team</p>
+        `,
+  });
+  res.status(201).json({
+    message: "User registered successfully",
+    success: true,
     user: {
       id: user._id,
       username: user.username,
@@ -44,5 +45,4 @@ async function registerUser(req, res) {
   });
 }
 
-
-export default {registerUser}
+export default { registerUser };
