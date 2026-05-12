@@ -5,7 +5,7 @@ async function registerUser(req, res) {
   const { username, email, password } = req.body;
 
   const isUserAlreadyExists = await userModel.findOne({
-    $or: [{email}, {username}],
+    $or: [{ email }, { username }],
   });
 
   if (isUserAlreadyExists) {
@@ -21,6 +21,16 @@ async function registerUser(req, res) {
     password,
     email,
   });
+
+  const emailVerificationToken = jwt.sign(
+    {
+      email: user.email,
+    },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: "1d",
+    },
+  );
 
   await sendEmail({
     to: email,
