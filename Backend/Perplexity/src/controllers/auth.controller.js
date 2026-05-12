@@ -72,8 +72,10 @@ export async function verifyEmail(req, res) {
 
   ((user.verified = true), await user.save());
 
-  res.sendHtml(`
-        <h1>Email Verified Successfully</h1>
-        <p>Your email has been verified. You can now log in to to you account.</p>
-    `);
+  const html = `
+  <h1>Email Verified Successfully</h1>
+  <p>Your email has been verified. You can now log in to your account.</p>
+  <a href="http://localhost:3000/login" target="_blank"> Go to Login</a>
+  `;
+  res.send(html);
 }
