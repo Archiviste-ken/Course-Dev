@@ -56,26 +56,58 @@ export async function registerUser(req, res) {
 export async function verifyEmail(req, res) {
   const { token } = req.query;
 
-  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-  const user = await userModel.findOne({
-    email: decoded.email,
-  });
-
-  if (!user) {
-    return res.status(400).json({
-      message: "Invalid token",
-      success: false,
-      err: "User not found",
+    const user = await userModel.findOne({
+      email: decoded.email,
     });
-  }
 
-  ((user.verified = true), await user.save());
+    if (!user) {
+      return res.status(400).json({
+        message: "Invalid token",
+        success: false,
+        err: "User not found",
+      });
+    }
 
-  const html = `
+    ((user.verified = true), await user.save());
+
+    const html = `
   <h1>Email Verified Successfully</h1>
   <p>Your email has been verified. You can now log in to your account.</p>
   <a href="http://localhost:3000/api/auth/login" target="_blank"> Go to Login</a>
   `;
-  res.send(html);
+    return res.send(html);
+  } catch (error) {
+    return res.status(400).json({
+      message: "Invalid token",
+      success: false,
+      err: "Token verification failed",
+    });
+  }
+}
+
+export async function login(req, res) {
+  const { email, password } = req.body;
+
+  const user = await userModel.findOne({
+    email
+  })
+
+  if (!user) {
+    return res.status(400).json({
+      message: "Invalid email or password",
+      success: false,
+      err: "User not found",
+    });
+  }
+  
+  if (!user.verified) {
+    return res.status(400).json({
+      message: "Please verify your email before logging in",
+      success: false,
+      err: "Email not verified",
+    });
+  }
 }
