@@ -27,9 +27,6 @@ async function registerUser(req, res) {
       email: user.email,
     },
     process.env.JWT_SECRET,
-    {
-      expiresIn: "1d",
-    },
   );
 
   await sendEmail({
@@ -39,7 +36,7 @@ async function registerUser(req, res) {
                 <p>Hi ${username},</p>
                 <p>Thank you for registering at <strong>Perplexity</strong>. We're excited to have you on board!</p>
                 <p>Please verify your email address by clicking the link below:</p>
-                
+                <a href="http://localhost:3000/api/auth/verify-email?token=${emailVerificationToken}" target="_blank">Verify Email</a>
                 <p>If you did not create an account, please ignore this email.</p>
                 <p>Best regards,<br>The Perplexity Team</p>
         `,
