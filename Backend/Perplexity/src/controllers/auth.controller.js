@@ -2,7 +2,7 @@ import userModel from "../models/user.model.js";
 import { sendEmail } from "../services/mail.service.js";
 import jwt from "jsonwebtoken";
 
-async function registerUser(req, res) {
+export async function registerUser(req, res) {
   const { username, email, password } = req.body;
 
   const isUserAlreadyExists = await userModel.findOne({
@@ -53,4 +53,27 @@ async function registerUser(req, res) {
   });
 }
 
-export default { registerUser };
+export async function verifyEmail(req, res) {
+  const { token } = req.query;
+
+  const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+  const user = await userModel.findOne({
+    email: decoded.email,
+  });
+
+  if (!user) {
+    return res.status(400).json({
+      message: "Invalid token",
+      success: false,
+      err: "User not found",
+    });
+  }
+
+  ((user.verified = true), await user.save());
+
+  res.sendHtml(`
+        <h1>Email Verified Successfully</h1>
+        <p>Your email has been verified. You can now log in to to you account.</p>
+    `);
+}
