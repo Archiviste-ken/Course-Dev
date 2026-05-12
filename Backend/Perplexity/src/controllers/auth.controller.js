@@ -2,7 +2,6 @@ import userModel from "../models/user.model.js";
 import { sendEmail } from "../services/mail.service.js";
 import jwt from "jsonwebtoken";
 
-
 async function registerUser(req, res) {
   const { username, email, password } = req.body;
 
