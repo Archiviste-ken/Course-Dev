@@ -6,4 +6,6 @@ const authrouter = Router();
 
 authrouter.post("/register", registerValidator, authController.registerUser);
 
+authrouter.get("/verify-email", authController.verifyEmail)
+
 export default authrouter;
