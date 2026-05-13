@@ -45,6 +45,6 @@ authrouter.post("/login", loginValidator, loginUser);
  * @access Private
  */
 
-authrouter.get("/get-me", authUser);
+authrouter.get("/get-me", authUser, getMe);
 
 export default authrouter;
