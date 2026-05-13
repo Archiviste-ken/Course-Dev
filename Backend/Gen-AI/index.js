@@ -2,7 +2,7 @@ import "dotenv/config";
 import readline from "readline/promises";
 import { ChatMistralAI } from "@langchain/mistralai";
 import { HumanMessage, tool, createAgent } from "langchain";
-import { sendEmail } from "./mail.services.js";
+import { sendEmail } from "./mail.service.js";
 import * as z from "zod";
 
 const emailTool = tool(sendEmail, {
@@ -38,11 +38,11 @@ while (true) {
 
   messages.push(new HumanMessage(userInput));
 
-  const response = await agent.invoke({ input: userInput });
+  const response = await agent.invoke({messages});
 
-  messages.push(response);
+  messages.push(response.messages[response.messages.length - 1]);
 
-  console.log(response)
+  console.log(response);
 }
 
 rl.close();
