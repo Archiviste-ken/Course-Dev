@@ -136,7 +136,6 @@ export async function loginUser(req, res) {
 }
 
 export async function getMe(req, res) {
-
   const userId = req.user.id;
 
   const user = await userModel.findById(userId).select("-password");
@@ -155,8 +154,5 @@ export async function getMe(req, res) {
       username: user.username,
       email: user.email,
     },
-  }); 
-  
-
-
+  });
 }
