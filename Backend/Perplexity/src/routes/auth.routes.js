@@ -7,7 +7,10 @@ import {
   registerUser,
   verifyEmail,
   loginUser,
+  getMe,
 } from "../controllers/auth.controller.js";
+
+import { authUser } from "../middleware/auth.middleware.js";
 
 const authrouter = Router();
 
@@ -42,6 +45,6 @@ authrouter.post("/login", loginValidator, loginUser);
  * @access Private
  */
 
-authrouter.get("/get-me",);
+authrouter.get("/get-me", authUser);
 
 export default authrouter;
