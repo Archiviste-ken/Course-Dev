@@ -20,17 +20,16 @@ transporter
     console.error("Error occurred while verifying email transporter:", error);
   });
 
-export async function sendEmail({ to, subject, html, text }) {
-
-    const mailOptions = {
-        from: process.env.GOOGLE_USER,
-        to,
-        subject,
-        html,
-        text
-    };
-
+export async function sendEmail({ to, subject, html, text = "" }) {
+  const mailOptions = {
+    from: process.env.GOOGLE_USER,
+    to,
+    subject,
+    html,
+    text,
+  };
 
   const details = await transporter.sendMail(mailOptions);
   console.log("Email sent ", details);
+  return "email sent successfully to " + to;
 }
