@@ -121,4 +121,16 @@ export async function loginUser(req, res) {
       expiresIn: "7d",
     },
   );
+
+  res.cookie("token", token);
+
+  res.status(200).json({
+    message: "Login successful",
+    success: true,
+    user: {
+      id: user._id,
+      username: user.username,
+      email: user.email,
+    },
+  });
 }
