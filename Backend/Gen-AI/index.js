@@ -2,6 +2,7 @@ import "dotenv/config";
 import readline from "readline/promises";
 import { ChatMistralAI } from "@langchain/mistralai";
 import { HumanMessage } from "langchain";
+import  {sendEmail} from "./mail.services.js"
 
 const rl = readline.createInterface({
   // helps take input from the user and print output to the console.
