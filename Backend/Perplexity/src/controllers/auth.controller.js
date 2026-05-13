@@ -88,12 +88,12 @@ export async function verifyEmail(req, res) {
   }
 }
 
-export async function login(req, res) {
+export async function loginUser(req, res) {
   const { email, password } = req.body;
 
   const user = await userModel.findOne({
-    email
-  })
+    email,
+  });
 
   if (!user) {
     return res.status(400).json({
@@ -102,7 +102,7 @@ export async function login(req, res) {
       err: "User not found",
     });
   }
-  
+
   if (!user.verified) {
     return res.status(400).json({
       message: "Please verify your email before logging in",
@@ -110,4 +110,15 @@ export async function login(req, res) {
       err: "Email not verified",
     });
   }
+
+  const token = jwt.sign(
+    {
+      id: user._id,
+      username: user.username,
+    },
+    process.env.JWT_SECRET,
+    {
+      expiresIn: "7d",
+    },
+  );
 }
