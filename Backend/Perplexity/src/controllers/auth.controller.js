@@ -134,3 +134,8 @@ export async function loginUser(req, res) {
     },
   });
 }
+
+export async function getMe(req, res) {
+  const userId = req.user.id;
+  
+}
