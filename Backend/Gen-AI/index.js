@@ -38,11 +38,13 @@ while (true) {
 
   messages.push(new HumanMessage(userInput));
 
-  const response = await agent.invoke({messages});
+  const response = await agent.invoke({ messages });
 
   messages.push(response.messages[response.messages.length - 1]);
 
-  console.log(response);
+  console.log(
+    `\x1b[34m[AI]\x1b[0m ${response.messages[response.messages.length - 1].content}`,
+  );
 }
 
 rl.close();
