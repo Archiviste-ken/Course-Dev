@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { register, login, getMe } from "../services/auth.api";
 import { setUser, setLoading, setError } from "../auth.slice";
 
-export async function useAuth() {
+export  function useAuth() {
   const dispatch = useDispatch();
 
   async function handleRegister({ email, username, password }) {
