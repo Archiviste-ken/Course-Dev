@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
+import { useNavigate } from "react-router";
+import { useAuth } from "../hook/useAuth.js";
+// import router from "../../../app/app.routes";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -26,7 +29,7 @@ const Login = () => {
 
     await handleLogin(formData);
 
-    navigate("/dashboard"); // Navigate to dashboard after successful login
+    navigate("/"); // Navigate to dashboard after successful login
   };
 
   return (
