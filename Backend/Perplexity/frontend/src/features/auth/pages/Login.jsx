@@ -3,12 +3,17 @@ import { Link } from "react-router";
 import { useNavigate } from "react-router";
 import { useAuth } from "../hook/useAuth.js";
 // import router from "../../../app/app.routes";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router";
 
 const Login = () => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const user = useSelector((state) => state.auth.user);
+  const loading = useSelector((state) => state.auth.loading);
 
   const { handleLogin } = useAuth();
 
@@ -32,6 +37,9 @@ const Login = () => {
     navigate("/"); // Navigate to dashboard after successful login
   };
 
+  if(!loading && user) {
+    return <Navigate to="/" replace />
+  }
   return (
     <main className="min-h-screen bg-[#050505] px-4 py-8 text-white">
       <div className="mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-5xl items-center justify-center">
