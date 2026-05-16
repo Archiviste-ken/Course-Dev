@@ -1,6 +1,7 @@
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { ChatMistralAI } from "@langchain/mistralai";
 import { HumanMessage } from "langchain";
+import { SystemMessage } from "langchain";
 
 const geminiModel = new ChatGoogleGenerativeAI({
   model: "gemini-2.5-flash-lite",
@@ -13,7 +14,7 @@ const mistralModel = new ChatMistralAI({
 });
 
 export async function generateResponse(message) {
-  const response = await model.invoke([new HumanMessage(message)]);
+  const response = await geminiModel.invoke([new HumanMessage(message)]);
 
   return response.text;
 }
@@ -22,7 +23,7 @@ export async function generateChatTitle(message) {
   const response = await mistralModel.invoke([
     new SystemMessage(`You are a helpful assistant that generates concise and descriptive titles for chat conversations.
       
-      User will provideyou with the first message of a chat conversation, and you will generate a title that captures the essence of the conversation in a 2-4 words. The title should be informative and engaging, giving users a clear idea of what the conversation is about.
+      User will provide you with the first message of a chat conversation, and you will generate a title that captures the essence of the conversation in a 2-4 words. The title should be informative and engaging, giving users a clear idea of what the conversation is about.
       
       `),
 
