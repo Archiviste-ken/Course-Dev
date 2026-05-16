@@ -2,7 +2,6 @@ import "dotenv/config";
 import app from "./src/app.js";
 import http from "http";
 import connectDB from "./src/config/db.js";
-import { testAI } from "./src/services/ai.services.js";
 import { initSocket } from "./src/sockets/server.sockets.js";
 
 // testAI();
