@@ -31,5 +31,4 @@ export async function generateChatTitle(message) {
     ),
   ]);
   return response.text;
-  ;
 }
