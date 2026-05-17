@@ -23,7 +23,7 @@ export async function registerUser(req, res) {
     email,
   });
 
-  const emailVerificationToken = jwt.sign(
+  const emailVerificationToken = jwt.sign(        //payload
     {
       email: user.email,
     },
