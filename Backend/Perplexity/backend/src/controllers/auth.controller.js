@@ -23,7 +23,8 @@ export async function registerUser(req, res) {
     email,
   });
 
-  const emailVerificationToken = jwt.sign(        //payload
+  const emailVerificationToken = jwt.sign(
+    //payload
     {
       email: user.email,
     },
@@ -42,6 +43,7 @@ export async function registerUser(req, res) {
                 <p>Best regards,<br>The Perplexity Team</p>
         `,
   });
+
   res.status(201).json({
     message: "User registered successfully",
     success: true,
