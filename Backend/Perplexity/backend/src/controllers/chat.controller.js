@@ -19,9 +19,7 @@ export async function sendMessage(req, res) {
     chat: chat._id,
     content: result,
     role: "ai",
-    
   });
-
 
   res.json({ aiMessage: result, title });
 }
