@@ -31,5 +31,5 @@ export async function sendMessage(req, res) {
     role: "ai",
   });
 
-  res.json({ aiMessage: result, title, message });
+  res.status(201).json({ title, chat, aiMessage});
 }
