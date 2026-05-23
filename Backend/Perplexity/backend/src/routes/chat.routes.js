@@ -4,6 +4,6 @@ import { authUser } from "../middleware/auth.middleware.js";
 
 const chatRouter = Router();
 
-chatRouter.post("/message", authUser, sendMessage);
+chatRouter.post("/chats", authUser, sendMessage);
 
 export default chatRouter;
