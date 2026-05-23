@@ -6,30 +6,34 @@ import chatModel from "../models/chat.model.js";
 import messageModel from "../models/message.model.js";
 
 export async function sendMessage(req, res) {
-  const { message } = req.body;
-
-  const title = await generateChatTitle(message);
+  const { message, chat: chatId } = req.body;
 
   const result = await generateResponse(message);
 
-  console.log(req.user);
+  let title = null,
+    chat = null;
 
-  const chat = await chatModel.create({
-    user: req.user.id,
-    title,
-  });
+  if (!chatId) {
+    title = await generateChatTitle(message);
+    chat = await chatModel.create({
+      user: req.user.id,
+      title,
+    });
+  }
 
-  const userMessage = await messageModel.create({
-    chat: chat._id,
-    content: message,
-    role: "user",
-  });
+  const messages = await messageModel.find({ chat: chatId });
 
-  const aiMessage = await messageModel.create({
-    chat: chat._id,
-    content: result,
-    role: "ai",
-  });
+  // const userMessage = await messageModel.create({
+  //   chat: chat._id,
+  //   content: message,
+  //   role: "user",
+  // });
 
-  res.status(201).json({ title, chat, aiMessage});
+  // const aiMessage = await messageModel.create({
+  //   chat: chat._id,
+  //   content: result,
+  //   role: "ai",
+  // });
+
+  res.status(201).json({ title, chat, aiMessage });
 }
