@@ -2,6 +2,9 @@ import {
   generateResponse,
   generateChatTitle,
 } from "../services/ai.services.js";
+import chatModel from "../models/chat.model.js";
+import messageModel from "../models/message.model.js";
+
 
 export async function sendMessage(req, res) {
   const { message } = req.body;
