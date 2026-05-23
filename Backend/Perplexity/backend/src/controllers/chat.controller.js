@@ -5,7 +5,6 @@ import {
 import chatModel from "../models/chat.model.js";
 import messageModel from "../models/message.model.js";
 
-
 export async function sendMessage(req, res) {
   const { message } = req.body;
 
@@ -13,17 +12,18 @@ export async function sendMessage(req, res) {
 
   const result = await generateResponse(message);
 
+  console.log(req.user);
+
   const chat = await chatModel.create({
-    user: req.user._id,
+    user: req.user.id,
     title,
   });
 
-    const userMessage = await messageModel.create({
+  const userMessage = await messageModel.create({
     chat: chat._id,
     content: message,
     role: "user",
   });
-
 
   const aiMessage = await messageModel.create({
     chat: chat._id,
@@ -31,5 +31,5 @@ export async function sendMessage(req, res) {
     role: "ai",
   });
 
-  res.json({ aiMessage: result, title });
+  res.json({ aiMessage: result, title, user });
 }
