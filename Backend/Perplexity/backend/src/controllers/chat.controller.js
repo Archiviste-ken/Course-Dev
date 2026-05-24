@@ -20,22 +20,23 @@ export async function sendMessage(req, res) {
   }
 
   const userMessage = await messageModel.create({
-    chat: chat._id,
+    chat: chatId || chat._id,
     content: message,
     role: "user",
   });
 
   const messages = await messageModel.find({ chat: chatId });
 
-  // const result = await generateResponse(message);
+  const result = await generateResponse(messages);
 
-  const aiMessage = await messageModel.create({
-    chat: chat._id,
-    content: result,
-    role: "ai",
-  });
+  // const aiMessage = await messageModel.create({
+  //   chat: chatId || chat._id,
+  //   content: result,
+  //   role: "ai",
+  // });
 
   console.log(messages);
 
   // res.status(201).json({ title, chat, aiMessage });
 }
+ 

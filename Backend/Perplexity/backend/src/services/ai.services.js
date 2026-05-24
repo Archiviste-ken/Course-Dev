@@ -2,7 +2,7 @@ import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { ChatMistralAI } from "@langchain/mistralai";
 import { HumanMessage } from "langchain";
 import { SystemMessage } from "langchain";
-
+import { AIMessage } from "langchain";
 const geminiModel = new ChatGoogleGenerativeAI({
   model: "gemini-2.5-flash-lite",
   apiKey: process.env.GEMINI_API_KEY,
@@ -13,7 +13,7 @@ const mistralModel = new ChatMistralAI({
   apiKey: process.env.MISTRAL_API_KEY,
 });
 
-export async function generateResponse(message) {
+export async function generateResponse(messages) {
   const response = await geminiModel.invoke([new HumanMessage(message)]);
 
   return response.text;
