@@ -8,8 +8,6 @@ import messageModel from "../models/message.model.js";
 export async function sendMessage(req, res) {
   const { message, chat: chatId } = req.body;
 
-  const result = await generateResponse(message);
-
   let title = null,
     chat = null;
 
@@ -21,19 +19,23 @@ export async function sendMessage(req, res) {
     });
   }
 
+  const userMessage = await messageModel.create({
+    chat: chat._id,
+    content: message,
+    role: "user",
+  });
+
   const messages = await messageModel.find({ chat: chatId });
 
-  // const userMessage = await messageModel.create({
-  //   chat: chat._id,
-  //   content: message,
-  //   role: "user",
-  // });
+  // const result = await generateResponse(message);
 
-  // const aiMessage = await messageModel.create({
-  //   chat: chat._id,
-  //   content: result,
-  //   role: "ai",
-  // });
+  const aiMessage = await messageModel.create({
+    chat: chat._id,
+    content: result,
+    role: "ai",
+  });
 
-  res.status(201).json({ title, chat, aiMessage });
+  console.log(messages);
+
+  // res.status(201).json({ title, chat, aiMessage });
 }
