@@ -14,14 +14,16 @@ const mistralModel = new ChatMistralAI({
 });
 
 export async function generateResponse(messages) {
-  const response = await geminiModel.invoke([messages.map((msg) => {
-    if (msg.role === "user") {
-      return new HumanMessage(msg.content);
-    } else if (msg.role === "ai") {
-      return new AIMessage(msg.content);
-    }
-    return new SystemMessage(msg.content);
-  })]);
+  const response = await geminiModel.invoke([
+    messages.map((msg) => {
+      if (msg.role === "user") {
+        return new HumanMessage(msg.content);
+      } else if (msg.role === "ai") {
+        return new AIMessage(msg.content);
+      }
+      return new SystemMessage(msg.content);
+    }),
+  ]);
 
   return response.text;
 }
