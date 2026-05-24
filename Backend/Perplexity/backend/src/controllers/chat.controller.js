@@ -51,8 +51,6 @@ export async function getChats(req, res) {
   });
 }
 
-
-
 export async function getMessages(req, res) {
   const { chatId } = req.params;
 
@@ -70,5 +68,24 @@ export async function getMessages(req, res) {
   res.status(200).json({
     message: "Messages retrieved successfully",
     messages,
+  });
+}
+
+export async function deleteChat(req, res) {
+  const { chatId } = req.params;
+
+  const chat = await chatModel.findOneAndDelete({
+    _id: chatId,
+    user: req.user.id,
+  });
+
+  await messageModel.deleteMany({ chat: chatId });
+
+  if (!chat) {
+    return res.status(404).json({ message: "Chat not found" });
+  }
+
+  res.status(200).json({
+    message: "Chat deleted successfully",
   });
 }
