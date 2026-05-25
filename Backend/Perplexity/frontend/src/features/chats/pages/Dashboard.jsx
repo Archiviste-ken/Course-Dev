@@ -15,10 +15,7 @@ const Dashboard = () => {
   console.log(user);
 
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <p>Welcome, {user?.name}!</p>
-    </div>
+    <main className="h-screen w-full flex bg-gray-800"></main>
   );
 };
 
