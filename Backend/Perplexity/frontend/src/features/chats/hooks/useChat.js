@@ -25,7 +25,7 @@ export const useChat = () => {
       try {
         const data = await sendMessage(message, chatId);
         const { chat, aiMessage } = data;
-        const existingChat = chats?.[chat._id];
+          const existingChat = chats?.[chat._id];
         const existingMessages = existingChat?.messages ?? [];
 
         dispatch(
