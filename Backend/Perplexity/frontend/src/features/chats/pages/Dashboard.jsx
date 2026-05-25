@@ -14,8 +14,7 @@ const Dashboard = () => {
     chat.initializeSocket();
   }, []);
 
-console.log(user);
-
+  console.log(user);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -106,11 +105,14 @@ console.log(user);
                 <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-transparent p-6 shadow-2xl shadow-cyan-500/10 sm:p-8">
                   <p className="text-sm text-slate-300">Assistant</p>
                   <h2 className="mt-3 text-lg font-semibold sm:text-xl">
-                    Can you explain functional programming and how it differs from OOP? Keep it concise.
+                    Can you explain functional programming and how it differs
+                    from OOP? Keep it concise.
                   </h2>
                   <div className="mt-6 space-y-4 text-sm text-slate-200">
                     <div className="rounded-2xl bg-white/5 p-4">
-                      <p className="font-semibold text-cyan-300">Functional Programming</p>
+                      <p className="font-semibold text-cyan-300">
+                        Functional Programming
+                      </p>
                       <ul className="mt-2 space-y-2 text-slate-300">
                         <li>Pure functions and predictable outputs.</li>
                         <li>Immutable data and declarative composition.</li>
@@ -118,7 +120,9 @@ console.log(user);
                       </ul>
                     </div>
                     <div className="rounded-2xl bg-white/5 p-4">
-                      <p className="font-semibold text-blue-300">Object-Oriented Programming</p>
+                      <p className="font-semibold text-blue-300">
+                        Object-Oriented Programming
+                      </p>
                       <ul className="mt-2 space-y-2 text-slate-300">
                         <li>Encapsulated state within objects.</li>
                         <li>Behavior and data grouped together.</li>
