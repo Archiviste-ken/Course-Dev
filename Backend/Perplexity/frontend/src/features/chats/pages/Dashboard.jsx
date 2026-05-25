@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { useChat } from "../hooks/useChat";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Dashboard = () => {
   const chat = useChat();
@@ -8,12 +8,23 @@ const Dashboard = () => {
 
   const { initializeSocket } = useChat();
 
+  const [message, setMessage] = useState("");
+
   useEffect(() => {
     chat.initializeSocket();
   }, []);
 
 console.log(user);
 
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!message.trim()) {
+      return;
+    }
+    console.log("Submit message:", message);
+    setMessage("");
+  };
 
   return (
     <main className="min-h-screen w-full bg-[#0B1220] text-slate-100">
@@ -161,23 +172,31 @@ console.log(user);
               </div>
             </div>
 
-            <div className="rounded-3xl border border-white/10 bg-white/5 p-4 sm:p-5">
+            <form
+              className="rounded-3xl border border-white/10 bg-white/5 p-4 sm:p-5"
+              onSubmit={handleSubmit}
+            >
               <div className="flex flex-col gap-4 md:flex-row md:items-center">
                 <label className="flex-1">
                   <span className="sr-only">Message Perplexity</span>
                   <textarea
                     className="h-24 w-full resize-none rounded-2xl border border-white/10 bg-[#0B1220] px-4 py-3 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-cyan-500/60 md:h-14"
                     placeholder="Message Perplexity..."
+                    value={message}
+                    onChange={(event) => setMessage(event.target.value)}
                   />
                 </label>
-                <button className="w-full rounded-2xl bg-cyan-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-500/30 transition hover:brightness-110 md:w-auto">
+                <button
+                  type="submit"
+                  className="w-full rounded-2xl bg-cyan-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-cyan-500/30 transition hover:brightness-110 md:w-auto"
+                >
                   Send
                 </button>
               </div>
               <p className="mt-3 text-xs text-slate-500">
                 AI can make mistakes. Consider verifying critical information.
               </p>
-            </div>
+            </form>
           </div>
         </section>
       </div>
