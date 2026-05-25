@@ -14,9 +14,7 @@ const Dashboard = () => {
 
   console.log(user);
 
-  return (
-    <main className="h-screen w-full flex bg-gray-800"></main>
-  );
+  return <main className="h-screen w-full flex bg-gray-800"></main>;
 };
 
 export default Dashboard;
