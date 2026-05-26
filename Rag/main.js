@@ -1,3 +1,8 @@
-import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf"
+import {PDFParse} from "pdf-parse";
+import fs from "fs";
 
-const loader = new PDFLoader()
+let dataBuffer = fs.readFileSync("story.pdf");
+
+const data = await pdf.parse(dataBuffer);
+
+console.log(data.text);
