@@ -343,3 +343,7 @@ instead of:
 "Answer purely from memory."
 
 That single idea powers most modern AI products today.
+
+
+
+Qdrant is vector database.

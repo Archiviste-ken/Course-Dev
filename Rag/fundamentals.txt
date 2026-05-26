@@ -1,0 +1,10 @@
+Some Concepts:-
+
+
+1)Ingestion
+
+2)Vector Stores
+
+3)Retrieval
+
+Context to AI
