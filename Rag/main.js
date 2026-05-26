@@ -4,6 +4,7 @@ import { RecursiveCharacterTextSplitter } from "@langchain/textsplitters";
 import "dotenv/config";
 import { MistralAIEmbeddings } from "@langchain/mistralai";
 import { Pinecone } from "@pinecone-database/pinecone";
+import { log } from "console";
 
 const pc = new Pinecone({
   apiKey: process.env.PINECONE_API_KEY,
@@ -44,11 +45,13 @@ const docs = await Promise.all(
 );
 
 const result = await index.upsert({
-    records: docs.map((doc, i) => ({
-        id: `doc-${i}`,
-        values: doc.embedding,
-        metadata: {
-            text: doc.text,
-        },
-    })),
-})
+  records: docs.map((doc, i) => ({
+    id: `doc-${i}`,
+    values: doc.embedding,
+    metadata: {
+      text: doc.text,
+    },
+  })),
+});
+
+console.log(result);
