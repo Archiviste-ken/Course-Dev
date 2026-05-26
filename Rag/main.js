@@ -10,7 +10,7 @@ const pc = new Pinecone({
   apiKey: process.env.PINECONE_API_KEY,
 });
 
-const index = pc.index("rag");
+const index = pc.index("rag-learn");
 
 let dataBuffer = fs.readFileSync("story.pdf");
 
