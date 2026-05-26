@@ -1,8 +1,13 @@
-import {PDFParse} from "pdf-parse";
+import { PDFParse } from "pdf-parse";
 import fs from "fs";
+import { log } from "console";
 
 let dataBuffer = fs.readFileSync("story.pdf");
 
-const data = await pdf.parse(dataBuffer);
+const parser = new PDFParse({
+  data: dataBuffer,
+});
 
-console.log(data.text);
+const data = await parser.getText();
+
+console.log(data);
