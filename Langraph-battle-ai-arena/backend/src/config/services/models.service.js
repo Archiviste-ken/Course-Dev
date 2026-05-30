@@ -12,6 +12,6 @@ export const mistralModel = new ChatMistral({
 });
 
 export const cohereModel = new ChatCohere({
-  model: "cohere-command-latest",
+  model: "command-r-08-2024",
   apiKey: config.COHERE_API_KEY,
 });
