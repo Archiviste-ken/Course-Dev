@@ -8,7 +8,7 @@ import {
   ReducedValue,
 } from "@langchain/langgraph";
 import type { GraphNode } from "@langchain/langgraph";
-import {z} from "zod";
+import { z } from "zod";
 
 // type JUDGEMENT = {
 //   winner: "solution_1" | "solution_2";
@@ -36,8 +36,28 @@ import {z} from "zod";
 
 const State = new StateSchema({
   messages: MessagesValue,
-  solution_1: new ReducedValue(z.string().default("")),
-  solution_2: new ReducedValue(),
+  solution_1: new ReducedValue(z.string().default(""), {
+    reducer: (current, next) => {
+      return next;
+    },
+  }),
+  solution_2: new ReducedValue(z.string().default(""), {
+    reducer: (current, next) => {
+      return next;
+    },
+  }),
+  judge_recommendation: new ReducedValue(
+    z.object().default({
+      solution_1_score: 0,
+      solution_2_score: 0,
+      winner: "solution_1",
+    }),
+    {
+      reducer: (current, next) => {
+        return next;
+      },
+    },
+  ),
 });
 
 //state is like an object that holds the current state of the graph. It can be updated and accessed by the nodes in the graph.
