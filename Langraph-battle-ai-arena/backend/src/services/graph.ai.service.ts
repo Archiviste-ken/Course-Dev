@@ -9,7 +9,7 @@ import {
   type GraphNode,
 } from "@langchain/langgraph";
 import { z } from "zod";
-import { mistralModel, cohereModel } from "./models.service.js";
+import { mistralModel, cohereModel, geminiModel } from "./models.service.js";
 
 // type JUDGEMENT = {
 //   winner: "solution_1" | "solution_2";
@@ -69,14 +69,16 @@ const solutionNode: GraphNode<typeof State> = async (state: typeof State) => {
 
   console.log(state);
 
-  const [mistral_solution, cohere_solution] = await Promise.all([
+  const [mistral_solution, cohere_solution, gemini_solution] = await Promise.all([
     mistralModel.invoke(state.messages[0].text),
     cohereModel.invoke(state.messages[0].text),
+    geminiModel.invoke(state.messages[0].text),
   ]);
 
   return {
     solution_1: mistral_solution.text,
     solution_2: cohere_solution.text,
+    solution_3: gemini_solution.text,
   };
 };
 
