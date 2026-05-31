@@ -1,4 +1,6 @@
-import { chatGoogle } from "@langchain/google";
+import { ChatGoogle } from "@langchain/google";
+import { ChatMistralAI } from "@langchain/mistralai";
+import { ChatCohere } from "@langchain/cohere";
 import config from "../config/config.js";
 
 export const geminiModel = new ChatGoogle({
@@ -6,7 +8,7 @@ export const geminiModel = new ChatGoogle({
   apiKey: config.GOOGLE_API_KEY,
 });
 
-export const mistralModel = new ChatMistral({
+export const mistralModel = new ChatMistralAI({
   model: "mistral-medium-latest",
   apiKey: config.MISTRAL_API_KEY,
 });

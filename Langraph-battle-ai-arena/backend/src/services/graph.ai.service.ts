@@ -9,6 +9,7 @@ import {
 } from "@langchain/langgraph";
 import type { GraphNode } from "@langchain/langgraph";
 import { z } from "zod";
+import { mistralModel, cohereModel } from "./models.service.js";
 
 // type JUDGEMENT = {
 //   winner: "solution_1" | "solution_2";
@@ -62,24 +63,33 @@ const State = new StateSchema({
 
 //state is like an object that holds the current state of the graph. It can be updated and accessed by the nodes in the graph.
 
-const solutionNode: GraphNode<typeof State> = (state: typeof State) => {
+const solutionNode: GraphNode<typeof State> = async (state: typeof State) => {
   // This is where you would implement the logic for generating a solution based on the current state.
   // You can access the current state using the `state` variable and update it as needed.
 
-  console.log(state.messages);
+  const [mistral_solution, cohere_solution] = await Promise.all([
+    mistralModel.invoke(state.messages[0]),
+    cohereModel.invoke(state.messages[0]),
+  ]);
+
   return {
-    messages: state.messages[0],
+    solution_1: mistral_solution.text,
+    solution_2: cohere_solution.text,
   };
 };
 
 const graph = new StateGraph(State)
   .addNode("solution", solutionNode)
   .addEdge(START, "solution") // START is by default the entry point of the graph, and END is the exit point. You can add edges between nodes to define the flow of the graph.
+  .addEdge("solution", END)
   .compile();
 
 export default async function (userMessage: string) {
   const result = await graph.invoke({
     messages: [new HumanMessage(userMessage)],
   });
+
+  console.log(result);
+
   return result;
 }
