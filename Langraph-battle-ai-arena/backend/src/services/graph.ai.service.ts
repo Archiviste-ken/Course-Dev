@@ -1,3 +1,4 @@
+import { HumanMessage } from "@langchain/core/messages";
 import {
   StateSchema,
   MessagesValue,
@@ -41,9 +42,22 @@ const solutionNode: GraphNode<typeof State> = (state: typeof State) => {
   // This is where you would implement the logic for generating a solution based on the current state.
   // You can access the current state using the `state` variable and update it as needed.
 
-  console.log(state.messages);
+  console.log(state.messages)
+  return {
+    messages: state.messages[0]
+  }
 };
 
 const graph = new StateGraph(State)
   .addNode("solution", solutionNode)
   .addEdge(START, "solution"); // START is by default the entry point of the graph, and END is the exit point. You can add edges between nodes to define the flow of the graph.
+  .compile();
+
+  export default async function (userMessage:string){
+    const result = await graph.invoke({
+      messages: [
+        new HumanMessage(userMessage)
+      ]
+    })
+    return result; 
+  }
