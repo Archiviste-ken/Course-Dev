@@ -67,9 +67,12 @@ const solutionNode: GraphNode<typeof State> = async (state: typeof State) => {
   // This is where you would implement the logic for generating a solution based on the current state.
   // You can access the current state using the `state` variable and update it as needed.
 
+  console.log(state);
+  
+
   const [mistral_solution, cohere_solution] = await Promise.all([
-    mistralModel.invoke(state.messages[0]),
-    cohereModel.invoke(state.messages[0]),
+    mistralModel.invoke(state.messages[0].text),
+    cohereModel.invoke(state.messages[0].text),
   ]);
 
   return {
