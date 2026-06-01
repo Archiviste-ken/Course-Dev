@@ -36,6 +36,10 @@ import { mistralModel, cohereModel, geminiModel } from "./models.service.js";
 //   },
 // };
 
+
+//StateSchema is a way to define the structure of the state that will be used in the graph. It allows you to define the shape of the state and how it can be updated. In this example, we have defined a state schema that includes messages, two solutions, and a judge recommendation. The solutions and judge recommendation are defined as ReducedValues, which means that they will be updated based on the output of the nodes in the graph. The reducer function for each ReducedValue simply replaces the current value with the next value, which means that the state will always reflect the latest output from the nodes.
+
+
 const State = new StateSchema({
   messages: MessagesValue,
   solution_1: new ReducedValue(z.string().default(""), {
