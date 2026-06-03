@@ -110,8 +110,10 @@ const normalizeArenaPayload = (payload, fallbackProblem) => {
   };
 };
 
+const API_BASE = import.meta.env.DEV ? "http://localhost:3000" : "";
+
 const fetchArenaResult = async (problem) => {
-  const response = await fetch("/api/arena", {
+  const response = await fetch(`${API_BASE}/api/arena`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
