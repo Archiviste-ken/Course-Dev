@@ -53,4 +53,4 @@ const store = createStore(reducer);
 console.log(store.getState());
 
 
-reducer()
+reducer({})
