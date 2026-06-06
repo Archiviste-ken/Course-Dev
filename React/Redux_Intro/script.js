@@ -1,5 +1,7 @@
 import { createStore } from "redux";
 
+const postCount = document.querySelector(".post-count");
+
 const initialState = {
   post: 0,
   name: "Shreyesh Pachpor",
@@ -57,13 +59,16 @@ function reducer(state = initialState, action) {
 // initialState = reducer(initialState, { type: "post/incrementBy", payload: 5 });
 // console.log(initialState);
 
-const store = createStore(reducer);
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__?.());
 
 console.log(store);
 
 store.subscribe(() => {
   console.log("State updated:", store.getState());
+  postCount.innerText = store.getState().post;
 });
+
+postCount.innerText = store.getState().post;
 
 store.dispatch({ type: decrement }); // dispatch is a method that is used to send an action to the store. The store will then call the reducer function with the current state and the action as arguments, and the reducer will return a new state based on the action type.
 
@@ -72,3 +77,7 @@ store.dispatch({ type: increment });
 store.dispatch({ type: incrementBy, payload: 5 });
 
 store.dispatch({ type: decrementBy, payload: 5 });
+
+setTimeout(() => {
+  store.dispatch({ type: decrement, payload: 5 });
+}, 2000);
