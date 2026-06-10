@@ -10,6 +10,7 @@ const initialState = {
 const CART_ADD_ITEM = "cart/addItem";
 const CART_REMOVE_ITEM = "cart/removeItem";
 const CART_ITEM_INCREASE_QUANTITY = " cart/increaseItemQuantity";
+const CART_ITEM_DECREASE_QUANTITY = "cart/decreaseItemQuantity";
 
 function reducer(state = initialState, action) {
   // console.log(action);
@@ -30,8 +31,18 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         cartItems: state.cartItems.map((cartItem) => {
-          if (cartItem.productId === action.payload.productId) {
-            return { ...cartItem, quantity: cartItem.quantity + 1 }
+          if (cartItem.productId === action.payload.productId ) {
+            return { ...cartItem, quantity: cartItem.quantity + 1 };
+          }
+          return cartItem;
+        }),
+      };
+    case CART_ITEM_DECREASE_QUANTITY:
+      return {
+        ...state,
+        cartItems: state.cartItems.map((cartItem) => {
+          if (cartItem.productId === action.payload.productId && cartItem.quantity !== 0) {
+            return { ...cartItem, quantity: cartItem.quantity - 1 };
           }
           return cartItem;
         }),
@@ -83,6 +94,54 @@ store.dispatch({
 
 store.dispatch({
   type: CART_ITEM_INCREASE_QUANTITY,
+  payload: {
+    productId: 12,
+  },
+});
+store.dispatch({
+  type: CART_ITEM_INCREASE_QUANTITY,
+  payload: {
+    productId: 12,
+  },
+});
+store.dispatch({
+  type: CART_ITEM_INCREASE_QUANTITY,
+  payload: {
+    productId: 12,
+  },
+});
+store.dispatch({
+  type: CART_ITEM_INCREASE_QUANTITY,
+  payload: {
+    productId: 2,
+  },
+});
+store.dispatch({
+  type: CART_ITEM_DECREASE_QUANTITY,
+  payload: {
+    productId: 12,
+  },
+});
+store.dispatch({
+  type: CART_ITEM_DECREASE_QUANTITY,
+  payload: {
+    productId: 12,
+  },
+});
+store.dispatch({
+  type: CART_ITEM_DECREASE_QUANTITY,
+  payload: {
+    productId: 12,
+  },
+});
+store.dispatch({
+  type: CART_ITEM_DECREASE_QUANTITY,
+  payload: {
+    productId: 12,
+  },
+});
+store.dispatch({
+  type: CART_ITEM_DECREASE_QUANTITY,
   payload: {
     productId: 12,
   },
