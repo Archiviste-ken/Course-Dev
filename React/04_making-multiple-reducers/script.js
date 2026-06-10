@@ -26,10 +26,16 @@ function reducer(state = initialState, action) {
           (cartItem) => cartItem.productId !== action.payload.productId,
         ),
       };
-      case CART_ITEM_INCREASE_QUANTITY:
-        return { ...state, cartItems: state.cartItems.map((cartItem)=> {
-
-        })}
+    case CART_ITEM_INCREASE_QUANTITY:
+      return {
+        ...state,
+        cartItems: state.cartItems.map((cartItem) => {
+          if (cartItem.productId === action.payload.productId) {
+            return { ...cartItem, quantity: cartItem.quantity + 1 }
+          }
+          return cartItem;
+        }),
+      };
     default:
       return state;
   }
@@ -78,8 +84,6 @@ store.dispatch({
 store.dispatch({
   type: CART_ITEM_INCREASE_QUANTITY,
   payload: {
-    productId: 5,
-    
+    productId: 12,
   },
 });
-
